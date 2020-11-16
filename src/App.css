@@ -1,38 +1,70 @@
 .App {
-  text-align: center;
+	height: 100vh;
+	color: white;
+	font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button,
+input[type='button'],
+input[type='submit'] {
+	height: 40px;
+	width: 70px;
+	background-color: blueviolet;
+	color: white;
+	box-shadow: none;
+	border: none;
+	font-size: 17px;
+	cursor: pointer;
+	margin: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:active,
+input[type='button']:active,
+input[type='submit']:active {
+	/* transform taken from w3schools */
+	transform: translateY(2px);
+	background-color: #2dc086;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button:focus,
+input[type='button']:focus,
+input[type='submit']:focus {
+	outline: 0;
 }
 
-.App-link {
-  color: #61dafb;
+@media (hover: hover) {
+	button:hover,
+	input[type='button']:hover,
+	input[type='submit']:hover {
+		background-color: rgb(107, 31, 179);
+	}
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.center-v {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.center-h {
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	background-color: #2a3039;
+	margin: 10px;
+	padding: 10px;
+}
+
+.custom {
+	width: 500px;
+	height: 500px;
 }
