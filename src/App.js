@@ -3,7 +3,7 @@ import SignUp from './Components/SignUp/SignUp';
 
 function App() {
 	return (
-		<div className='App'>
+		<div className='App center'>
 			<SignUp />
 		</div>
 	);

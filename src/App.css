@@ -18,6 +18,12 @@ input[type='submit'] {
 	margin: 3px;
 }
 
+button.err,
+input[type='button'].err,
+input[type='submit'].err {
+	background-color: crimson;
+}
+
 button:active,
 input[type='button']:active,
 input[type='submit']:active {
@@ -64,6 +70,12 @@ input[type='submit']:focus {
 	padding: 10px;
 }
 
+.err-text {
+	color: crimson;
+	margin: 0;
+	padding: 0;
+}
+
 .form-stack input,
 label {
 	display: block;
@@ -81,6 +93,16 @@ input {
 	margin: 3px;
 }
 
+input.err {
+	border: 2px solid crimson;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+}
+
 .custom {
-	width: 500px;
+	width: 400px;
+	padding: 30px 10px;
 }
