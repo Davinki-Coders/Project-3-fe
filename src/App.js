@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
 	return (
-		<div className='App center'>
-			<div className='container custom center-h'>
-				<button>Hello</button>
-				<button>Hello</button>
-			</div>
+		<div className='App'>
+			<SignUp />
 		</div>
 	);
 }
