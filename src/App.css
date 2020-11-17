@@ -79,6 +79,10 @@ input[type='submit']:focus {
 	max-width: 100%;
 }
 
+img {
+	max-width: 100%;
+}
+
 .err-text {
 	color: crimson;
 	margin: 0;

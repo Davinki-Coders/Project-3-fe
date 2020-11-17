@@ -1,0 +1,21 @@
+.game-card {
+	flex-direction: column;
+	max-width: 250px;
+	min-width: 200px;
+}
+
+.game-card img {
+	display: block;
+	margin: 3px 0;
+}
+
+.game-card-title {
+	display: block;
+	margin: 3px 0;
+	font-size: 1.3rem;
+}
+
+.game-card-dev {
+	display: block;
+	margin: 3px 0;
+}
