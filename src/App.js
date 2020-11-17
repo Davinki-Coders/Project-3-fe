@@ -1,10 +1,10 @@
 import './App.css';
-import SignUp from './Components/SignUp/SignUp';
+import GameCard from './Components/GameCard/GameCard';
 
 function App() {
 	return (
 		<div className='App center'>
-			<SignUp />
+			<GameCard />
 		</div>
 	);
 }
