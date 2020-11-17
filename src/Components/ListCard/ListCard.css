@@ -1,0 +1,18 @@
+.list-card {
+    height: 250px;
+    flex-direction: row;
+}
+.list-card img {
+    max-height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+.list-card-title {
+  display: block;
+  margin-top: 5px;
+}
+.list-card-author {
+    display: block;
+    margin-top: -15px;
+   
+}
