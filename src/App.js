@@ -10,7 +10,19 @@ function App() {
 		id: 12345,
 	};
 	return (
-		<div className='App center'>
+		<div className='App container center'>
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
+			<GameCard game={dummyGame} />
 			<GameCard game={dummyGame} />
 		</div>
 	);
