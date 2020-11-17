@@ -15,6 +15,10 @@ const SignUp = () => {
 				<button className='err' type='click'>
 					Cancel
 				</button>
+				<p style={{ display: 'block', margin: '3px' }}>
+					Have an account?&nbsp;
+					<a href='#'>Log In</a>
+				</p>
 			</form>
 		</div>
 	);
