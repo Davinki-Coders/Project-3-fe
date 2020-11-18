@@ -10,20 +10,14 @@ function App() {
 		id: 12345,
 	};
 	return (
-		<div className='App container center'>
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
-			<GameCard game={dummyGame} />
+		<div className='App' id='outer-container'>
+			<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+			<div id='page-wrap'>
+				<h1 className='logo-header'>App Name</h1>
+				<div className='main'>
+					<GameCard game={dummyGame}></GameCard>
+				</div>
+			</div>
 		</div>
 	);
 }
