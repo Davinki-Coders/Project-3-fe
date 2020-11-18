@@ -12,7 +12,7 @@ const FormField = ({
 	return (
 		<>
 			<input
-				className={!err || 'err'}
+				className={!err ? '' : false || 'err'}
 				required={required}
 				type={type}
 				id={id}

@@ -10,9 +10,29 @@ const SignUp = () => {
 		confirm: '',
 		usernameErr: '',
 		emailErr: '',
+		passwordErr: '',
 		confirmErr: '',
 	};
 	const [formState, setFormState] = useState(blankForm);
+
+	function doubleCheckForm() {
+		const errs = {};
+		errs.usernameErr = formState.username ? '' : 'Required';
+		errs.emailErr = formState.emailErr ? '' : 'Required';
+		errs.passwordErr = formState.passwordErr ? '' : 'Required';
+		errs.confirmErr = formState.confirmErr ? '' : 'Required';
+		setFormState({ ...formState, ...errs });
+		if (
+			!errs.usernameErr &&
+			!errs.emailErr &&
+			!errs.confirmErr &&
+			!errs.passwordErr
+		) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	function validateUsername(e) {
 		const regex = RegExp('^[a-zA-Z_]*$');
@@ -38,7 +58,7 @@ const SignUp = () => {
 	}
 
 	function validateEmail(e) {
-		const regex = RegExp('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
+		const regex = RegExp('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,15}$');
 		if (!e.target.value) {
 			setFormState({
 				...formState,
@@ -60,14 +80,44 @@ const SignUp = () => {
 		}
 	}
 
-	function validatePassword(e) {}
+	function validatePassword(e) {
+		if (!e.target.value) {
+			setFormState({
+				...formState,
+				[e.target.id + 'Err']: 'Required',
+				[e.target.id]: e.target.value,
+			});
+		} else if (e.target.id === 'password') {
+			if (e.target.value !== formState.confirm) {
+				setFormState({
+					...formState,
+					confirmErr: 'Passwords must match',
+					[e.target.id]: e.target.value,
+				});
+			} else {
+				setFormState({
+					...formState,
+					passwordErr: '',
+					[e.target.id]: e.target.value,
+				});
+			}
+		} else if (e.target.value !== formState.password) {
+			setFormState({
+				...formState,
+				confirmErr: 'Passwords must match',
+				[e.target.id]: e.target.value,
+			});
+		} else {
+			setFormState({
+				...formState,
+				[e.target.id]: e.target.value,
+			});
+		}
+	}
+
 	function handleSubmit(e) {
 		e.preventDefault();
-		if (
-			!formState.usernameErr &&
-			!formState.emailErr &&
-			!formState.confirmErr
-		) {
+		if (doubleCheckForm()) {
 			console.log(formState);
 		} else {
 			console.log('invalid form');
@@ -102,13 +152,21 @@ const SignUp = () => {
 					err={formState.passwordErr}
 					handleChange={validatePassword}
 				/>
+				<label htmlFor='password'>Confirm Password:</label>
+				<FormField
+					type='password'
+					id='confirm'
+					value={formState.confirm}
+					err={formState.confirmErr}
+					handleChange={validatePassword}
+				/>
 				<button>Submit</button>
 				<button className='err' type='click'>
 					Cancel
 				</button>
 				<p style={{ display: 'block', margin: '3px' }}>
 					Have an account?&nbsp;
-					<a href='#'>Log In</a>
+					<a href='/login'>Log In</a>
 				</p>
 			</form>
 		</div>
