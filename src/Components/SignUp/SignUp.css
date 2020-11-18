@@ -1,0 +1,12 @@
+.sign-up-box {
+	width: 400px;
+	margin: 30px auto;
+	padding: 30px 10px;
+	background-color: #2a3039;
+}
+
+.sign-up-form input {
+	width: 300px;
+	font-size: 20px;
+	padding: 10px;
+}
