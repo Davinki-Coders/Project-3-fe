@@ -3,6 +3,7 @@ import RecentLists from '../RecentLists/RecentLists';
 import { Link } from 'react-router-dom';
 import Hero from '../Hero/Hero';
 import './Home.css';
+import Hero from '../Hero/Hero'
 
 const Home = () => {
 	const [newLists, setNewLists] = useState([]);
