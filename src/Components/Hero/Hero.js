@@ -18,8 +18,7 @@ const Hero = () => {
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
 						accusantium culpa doloribus sit. Unde suscipit ullam voluptatibus.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-						accusantium culpa doloribus sit. Unde suscipit ullam voluptatibus.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
 					<button onClick={handleClick}>Sign Up</button>
 
