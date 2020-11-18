@@ -37,6 +37,29 @@ const SignUp = () => {
 		}
 	}
 
+	function validateEmail(e) {
+		const regex = RegExp('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
+		if (!e.target.value) {
+			setFormState({
+				...formState,
+				emailErr: 'Required',
+				[e.target.id]: e.target.value,
+			});
+		} else if (regex.test(e.target.value) && e.target.value) {
+			setFormState({
+				...formState,
+				emailErr: '',
+				[e.target.id]: e.target.value,
+			});
+		} else {
+			setFormState({
+				...formState,
+				emailErr: 'Invalid email',
+				[e.target.id]: e.target.value,
+			});
+		}
+	}
+
 	function validatePassword(e) {}
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -64,7 +87,21 @@ const SignUp = () => {
 					handleChange={validateUsername}
 				/>
 				<label htmlFor='email'>Email:</label>
-				<input type='email' id='email' />
+				<FormField
+					type='email'
+					id='email'
+					value={formState.email}
+					err={formState.emailErr}
+					handleChange={validateEmail}
+				/>
+				<label htmlFor='password'>Password:</label>
+				<FormField
+					type='password'
+					id='password'
+					value={formState.password}
+					err={formState.passwordErr}
+					handleChange={validatePassword}
+				/>
 				<button>Submit</button>
 				<button className='err' type='click'>
 					Cancel
