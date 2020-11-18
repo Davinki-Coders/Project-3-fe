@@ -22,6 +22,7 @@ const Hero = () => {
 						accusantium culpa doloribus sit. Unde suscipit ullam voluptatibus.
 					</p>
 					<button onClick={handleClick}>Sign Up</button>
+
 				</div>
 			</div>
 		</div>
