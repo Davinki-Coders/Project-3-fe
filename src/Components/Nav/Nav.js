@@ -14,7 +14,7 @@ const Nav = (props) => {
 				Browse Lists
 			</Link>
 			<Link to='/lists/create' className='bm-item' href='/lists'>
-				Create Link List
+				Create List
 			</Link>
 			<Link to='/user' className='bm-item' href='/lists'>
 				My Profile
