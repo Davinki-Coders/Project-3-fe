@@ -2,26 +2,27 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import './Nav.css';
+import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
 	return (
 		<Menu right>
-			<a className='bm-item' href='/'>
+			<Link to='/' className='bm-item' href='/'>
 				Home
-			</a>
-			<a className='bm-item' href='/lists'>
+			</Link>
+			<Link to='/lists' className='bm-item' href='/lists'>
 				Browse Lists
-			</a>
-			<a className='bm-item' href='/lists'>
-				Create a List
-			</a>
-			<a className='bm-item' href='/lists'>
+			</Link>
+			<Link to='/lists/create' className='bm-item' href='/lists'>
+				Create Link List
+			</Link>
+			<Link to='/user' className='bm-item' href='/lists'>
 				My Profile
-			</a>
-			<a className='bm-item' href='/lists'>
+			</Link>
+			<Link to='/login' className='bm-item' href='/lists'>
 				Log In/Log Out{' '}
 				{/* placeholder, will be conditional when the time comes */}
-			</a>
+			</Link>
 		</Menu>
 	);
 };
