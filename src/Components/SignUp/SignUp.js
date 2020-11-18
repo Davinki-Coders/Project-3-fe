@@ -92,12 +92,12 @@ const SignUp = () => {
 				setFormState({
 					...formState,
 					confirmErr: 'Passwords must match',
+					passwordErr: '',
 					[e.target.id]: e.target.value,
 				});
 			} else {
 				setFormState({
 					...formState,
-					passwordErr: '',
 					[e.target.id]: e.target.value,
 				});
 			}
