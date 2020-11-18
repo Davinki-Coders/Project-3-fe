@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import GameCard from './Components/GameCard/GameCard';
+import Nav from './Components/Nav/Nav';
+import Home from './Components/Home/Home';
+import { Route, Link } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
+	return (
+		<div className='App' id='outer-container'>
+			<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+			<div id='page-wrap'>
+				<div className='logo-header'>
+					<Link to='/' className='header-link'>
+						<h1>App Name</h1>
+					</Link>
+				</div>
+				<div className='main'>
+					{/*insert youre in-progress component right above this comment if
+          you'd like to test it on the home page, again please try not to move these
+          components that are tied to the burger menu*/}
+					<Route path='/' component={Home} />
+					<Route path='/lists' />
+					<Route path='/lists/create' />
+					<Route path='/user' />
+					<Route path='/login' />
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default App;
