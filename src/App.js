@@ -1,23 +1,22 @@
 import './App.css';
 import GameCard from './Components/GameCard/GameCard';
 import Nav from './Components/Nav/Nav';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 function App() {
-	const dummyGame = {
-		cover:
-			'https://i.pinimg.com/originals/1b/d4/14/1bd4141717fc3bd8d3e517cadaa231ab.png',
-		title: 'Spider-Man - Miles Morales',
-		developer: 'Insomniac Games',
-		id: 12345,
-	};
-	//PLEASE DO NOTE MOVE THESE IT WILL BREAK THE BURGER MENU
+	const testData = require('../public/test-data.json');
+	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
 	return (
 		<div className='App' id='outer-container'>
 			<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
 			<div id='page-wrap'>
-				<h1 className='logo-header'>App Name</h1>
+				<Link to='/' className='header-link'>
+					<h1 className='logo-header'>App Name</h1>
+				</Link>
 				<div className='main'>
+					{/*insert youre in-progress component right above this comment if
+          you'd like to test it on the home page, again please try not to move these
+          components that are tied to the burger menu*/}
 					<Route path='/' />
 					<Route path='/lists' />
 					<Route path='/lists/create' />

@@ -47,6 +47,11 @@ input[type='submit']:focus {
 		text-decoration: underline;
 	}
 
+	.logo-header:hover,
+	.header-link:hover {
+		text-decoration: none;
+	}
+
 	button:hover,
 	input[type='button']:hover,
 	input[type='submit']:hover {
@@ -120,4 +125,5 @@ textarea:focus {
 .logo-header {
 	margin: 20px 10px;
 	font-size: 2.5rem;
+	color: white;
 }
