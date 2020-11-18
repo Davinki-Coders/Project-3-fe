@@ -9,33 +9,62 @@ const SignUp = () => {
 		password: '',
 		confirm: '',
 		usernameErr: '',
+		emailErr: '',
 		confirmErr: '',
 	};
 	const [formState, setFormState] = useState(blankForm);
 
 	function validateUsername(e) {
-		//finish this
+		const regex = RegExp('^[a-zA-Z_]*$');
+		if (!e.target.value) {
+			setFormState({
+				...formState,
+				usernameErr: 'Required',
+				[e.target.id]: e.target.value,
+			});
+		} else if (regex.test(e.target.value) && e.target.value) {
+			setFormState({
+				...formState,
+				usernameErr: '',
+				[e.target.id]: e.target.value,
+			});
+		} else {
+			setFormState({
+				...formState,
+				usernameErr: 'No special chars except underscore',
+				[e.target.id]: e.target.value,
+			});
+		}
 	}
 
 	function validatePassword(e) {}
 	function handleSubmit(e) {
 		e.preventDefault();
+		if (
+			!formState.usernameErr &&
+			!formState.emailErr &&
+			!formState.confirmErr
+		) {
+			console.log(formState);
+		} else {
+			console.log('invalid form');
+		}
 	}
+
 	return (
-		<div className='container sign-up center-h'>
-			<form className='form-stack' onSubmit={handleSubmit}>
+		<div className='container sign-up-box center-h'>
+			<form className='form-stack sign-up-form' onSubmit={handleSubmit}>
 				<h1>Sign Up</h1>
 				<label htmlFor='username'>Username:</label>
 				<FormField
 					type='text'
 					id='username'
-					form={formState}
+					value={formState.username}
 					err={formState.usernameErr}
-					required={true}
 					handleChange={validateUsername}
 				/>
 				<label htmlFor='email'>Email:</label>
-				<input required type='email' id='email' />
+				<input type='email' id='email' />
 				<button>Submit</button>
 				<button className='err' type='click'>
 					Cancel

@@ -116,6 +116,7 @@ input {
 
 input.err {
 	border: 2px solid crimson;
+	font-size: 13px;
 }
 
 input:focus,
