@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RecentLists from '../RecentLists/RecentLists';
 import { Link } from 'react-router-dom';
+import Hero from '../Hero/Hero';
 import './Home.css';
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
 	}, []);
 	return (
 		<div className='home'>
+			<Hero />
 			<div className='recents-header'>
 				<h2>Recently Created:</h2>
 				<Link to='/lists'>Browse More</Link>

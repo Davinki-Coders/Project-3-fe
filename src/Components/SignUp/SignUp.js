@@ -98,6 +98,7 @@ const SignUp = () => {
 			} else {
 				setFormState({
 					...formState,
+					confirmErr: '',
 					[e.target.id]: e.target.value,
 				});
 			}
@@ -110,6 +111,7 @@ const SignUp = () => {
 		} else {
 			setFormState({
 				...formState,
+				confirmErr: '',
 				[e.target.id]: e.target.value,
 			});
 		}
