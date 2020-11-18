@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
 import SignUp from './Components/SignUp/SignUp';
 import GameInfo from './Components/GameInfo/GameInfo'
+import List from './Components/List/List'
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -28,6 +29,7 @@ function App() {
 					<Route path='/login' />
 					<Route path='/signup' component={SignUp} />
 					<Route path='/games' component={GameInfo} />
+					<Route path='/lists/:id' component={List} />
 				</div>
 			</div>
 		</div>
