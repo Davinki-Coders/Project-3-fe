@@ -1,22 +1,29 @@
 import './App.css';
 import GameCard from './Components/GameCard/GameCard';
-import ListCard from './Components/ListCard/ListCard'
+import Nav from './Components/Nav/Nav';
+import { Route } from 'react-router-dom';
 
 function App() {
-	const collection = {
-		image: 'https://images.theconversation.com/files/175539/original/file-20170626-315-1h7k01d.jpg?ixlib=rb-1.1.0&rect=0%2C618%2C3500%2C1697&q=45&auto=format&w=1356&h=668&fit=crop',
-		listName: 'My List',
-		author: 'Author',
-		
+	const dummyGame = {
+		cover:
+			'https://i.pinimg.com/originals/1b/d4/14/1bd4141717fc3bd8d3e517cadaa231ab.png',
+		title: 'Spider-Man - Miles Morales',
+		developer: 'Insomniac Games',
+		id: 12345,
 	};
+	//PLEASE DO NOTE MOVE THESE IT WILL BREAK THE BURGER MENU
 	return (
-		<div className='App center'>
-			<div style={{flexDirection: 'row'}}>
-			<ListCard collection={collection} />
-			<ListCard collection={collection} />
-			<ListCard collection={collection} />
-			<ListCard collection={collection} />
-			<ListCard collection={collection} />
+		<div className='App' id='outer-container'>
+			<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+			<div id='page-wrap'>
+				<h1 className='logo-header'>App Name</h1>
+				<div className='main'>
+					<Route path='/' />
+					<Route path='/lists' />
+					<Route path='/lists/create' />
+					<Route path='/user' />
+					<Route path='/login' />
+				</div>
 			</div>
 		</div>
 	);
