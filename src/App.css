@@ -2,6 +2,7 @@
 	height: 100%;
 	color: white;
 	font-family: sans-serif;
+	padding-top: 86px;
 }
 
 a {
@@ -45,6 +46,11 @@ input[type='submit']:focus {
 @media (hover: hover) {
 	a:hover {
 		text-decoration: underline;
+	}
+
+	.logo-header:hover,
+	.header-link:hover {
+		text-decoration: none;
 	}
 
 	button:hover,
@@ -118,6 +124,22 @@ textarea:focus {
 }
 
 .logo-header {
-	margin: 20px 10px;
-	font-size: 2.5rem;
+	padding: 12px 10px;
+	margin: 0;
+	color: white;
+	background-color: #0e1418;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.header-link {
+	color: white;
+	font-size: 1.5rem;
+}
+
+.header-link h1 {
+	margin: 0;
+	padding: 10px 0;
+	display: inline-block;
 }
