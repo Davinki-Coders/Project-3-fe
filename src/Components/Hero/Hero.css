@@ -4,8 +4,15 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 40vw;
+	height: 325px;
 	justify-content: center;
+	margin: 10px 0 40px 0;
+}
+
+@media (min-width: 900px) {
+	.hero-image {
+		height: 500px;
+	}
 }
 
 .hero-text {
