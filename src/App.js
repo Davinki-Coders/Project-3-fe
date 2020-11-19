@@ -4,14 +4,15 @@ import Nav from './Components/Nav/Nav';
 import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
 import SignUp from './Components/SignUp/SignUp';
-import GameInfo from './Components/GameInfo/GameInfo'
-import List from './Components/List/List'
+import GameInfo from './Components/GameInfo/GameInfo';
+import List from './Components/List/List';
+import LogIn from './Components/LogIn/LogIn';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
 	return (
 		<div className='App' id='outer-container'>
-			<Nav pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
+			<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
 			<div id='page-wrap'>
 				<div className='logo-header'>
 					<Link to='/' className='header-link'>
@@ -26,7 +27,7 @@ function App() {
 					<Route path='/lists' />
 					<Route path='/lists/create' />
 					<Route path='/user' />
-					<Route path='/login' />
+					<Route path='/login' component={LogIn} />
 					<Route path='/signup' component={SignUp} />
 					<Route path='/games' component={GameInfo} />
 					<Route path='/lists/:id' component={List} />

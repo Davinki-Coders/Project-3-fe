@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import FormField from '../FormField/FormField';
+import { useHistory } from 'react-router-dom';
 //DUMMY COMPONENT FOR STYLING, DO NOT USE, FORM FIELDS WILL BE CONVERTED TO CUSTOM COMPONENTS
 const SignUp = () => {
+	const history = useHistory();
 	const blankForm = {
 		username: '',
 		email: '',
@@ -18,9 +20,9 @@ const SignUp = () => {
 	function doubleCheckForm() {
 		const errs = {};
 		errs.usernameErr = formState.username ? '' : 'Required';
-		errs.emailErr = formState.emailErr ? '' : 'Required';
-		errs.passwordErr = formState.passwordErr ? '' : 'Required';
-		errs.confirmErr = formState.confirmErr ? '' : 'Required';
+		errs.emailErr = formState.email ? '' : 'Required';
+		errs.passwordErr = formState.password ? '' : 'Required';
+		errs.confirmErr = formState.confirm ? '' : 'Required';
 		setFormState({ ...formState, ...errs });
 		if (
 			!errs.usernameErr &&
@@ -32,6 +34,10 @@ const SignUp = () => {
 		} else {
 			return false;
 		}
+	}
+
+	function handleCancel(e) {
+		history.push('/');
 	}
 
 	function validateUsername(e) {
@@ -154,7 +160,7 @@ const SignUp = () => {
 					err={formState.passwordErr}
 					handleChange={validatePassword}
 				/>
-				<label htmlFor='password'>Confirm Password:</label>
+				<label htmlFor='confirm'>Confirm Password:</label>
 				<FormField
 					type='password'
 					id='confirm'
@@ -162,8 +168,8 @@ const SignUp = () => {
 					err={formState.confirmErr}
 					handleChange={validatePassword}
 				/>
-				<button>Submit</button>
-				<button className='err' type='click'>
+				<button type='submit'>Submit</button>
+				<button className='err' type='click' onClick={handleCancel}>
 					Cancel
 				</button>
 				<p style={{ display: 'block', margin: '3px' }}>
