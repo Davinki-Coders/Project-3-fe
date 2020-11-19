@@ -4,10 +4,10 @@ import './GameCard.css';
 
 const GameCard = ({ game }) => {
 	return (
-		<Link to={`../games/${game.id}`} className='game-card'>
-			<img src={game.image} alt={game.name} />
+		<a href={`../games/${game.id}`} className='container game-card'>
+			<img src={game.background_image} alt={game.name} />
 			<p className='game-card-title'>{game.name}</p>
-		</Link>
+		</a>
 	);
 };
 
