@@ -3,12 +3,12 @@ import './SignUp.css';
 import FormField from '../FormField/FormField';
 import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
-import { AppContext } from '../../AppContext'
+import { AppContext } from '../../AppContext';
 
 //DUMMY COMPONENT FOR STYLING, DO NOT USE, FORM FIELDS WILL BE CONVERTED TO CUSTOM COMPONENTS
 const SignUp = () => {
 	const history = useHistory();
-	const { setUserInfo } = useContext(AppContext)
+	const { setUserInfo } = useContext(AppContext);
 	const blankForm = {
 		username: '',
 		email: '',
@@ -45,7 +45,7 @@ const SignUp = () => {
 	}
 
 	function validateUsername(e) {
-		const regex = RegExp('^[a-zA-Z_]*$');
+		const regex = RegExp('^[a-zA-Z0-9_]*$');
 		if (!e.target.value) {
 			setFormState({
 				...formState,
@@ -130,18 +130,29 @@ const SignUp = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (doubleCheckForm()) {
-		const url = 'https://davinkibackend.herokuapp.com/api/users/signup';
+			const url = 'https://davinkibackend.herokuapp.com/api/users/signup';
 			Axios({
-				method: 'post', 
+				method: 'post',
 				url: url,
 				data: {
 					username: formState.username,
 					email: formState.email,
-					password: formState.password
-				}
+					password: formState.password,
+				},
 			})
-			.then(res => setUserInfo(res.data))
-			.catch(console.error)
+				.then((res) => {
+					Axios({
+						method: 'post',
+						url: 'https://davinkibackend.herokuapp.com/api/users/login',
+						data: {
+							email: formState.email,
+							password: formState.password,
+						},
+					})
+						.then((res) => setUserInfo(res.data))
+						.then(() => history.push('/'));
+				})
+				.catch(console.error);
 		} else {
 			console.log('invalid form');
 		}
