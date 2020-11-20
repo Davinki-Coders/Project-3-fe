@@ -8,9 +8,14 @@ import GameInfo from './Components/GameInfo/GameInfo';
 import List from './Components/List/List';
 import LogIn from './Components/LogIn/LogIn';
 import CreateList from './Components/CreateList/CreateList'
+import React, { useState } from 'react';
+import { AppContext } from './AppContext';
+
+
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
+	const [userInfo, setUserInfo] = useState();
 	return (
 		<div className='App' id='outer-container'>
 			<Nav pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
@@ -33,7 +38,7 @@ function App() {
 					<Route path='/games' component={GameInfo} />
 					<Route path='/lists/:id' component={List} />
 				</div>
-			</div>
+			</AppContext.Provider>
 		</div>
 	);
 }
