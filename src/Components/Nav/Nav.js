@@ -1,10 +1,15 @@
 //MODIFIED FROM REACT-BURGER-MENU DOCUMENTATION EXAMPLES
-import React from 'react';
+import React, { useContext } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import './Nav.css';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../../AppContext.js';
 
 const Nav = (props) => {
+	const { userInfo, setUserInfo } = useContext(AppContext);
+	function logOut() {
+		setUserInfo();
+	}
 	return (
 		<Menu right>
 			<Link to='/' className='bm-item' href='/'>
@@ -19,10 +24,13 @@ const Nav = (props) => {
 			<Link to='/user' className='bm-item' href='/lists'>
 				My Profile
 			</Link>
-			<Link to='/login' className='bm-item' href='/lists'>
-				Log In/Log Out{' '}
-				{/* placeholder, will be conditional when the time comes */}
-			</Link>
+			{userInfo ? (
+				<button onClick={logOut}>Log Out</button>
+			) : (
+				<Link to='/login' className='bm-item' href='/lists'>
+					Log In
+				</Link>
+			)}
 		</Menu>
 	);
 };
