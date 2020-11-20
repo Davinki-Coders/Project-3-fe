@@ -1,12 +1,38 @@
 import React from "react";
 import "./CreateCard.css";
 
-const CreateCard = ({ game, setFormState }) => {
+const CreateCard = ({ result, setFormState, formState }) => {
+	function handleClick(e) {
+		if (result) {
+			console.log("results:", result);
+			console.log("formState", formState);
+			console.log("formState.games:", formState.games);
+		}
+
+		if (formState.games.find((game) => game.id === result.id)) {
+			console.log("REMOVE GAME:", result.id);
+
+			const newGameList = [...formState.games];
+			const index = newGameList.findIndex(
+				(game) => game.id === result.id
+			);
+            newGameList.splice(index, 1)
+            setFormState({ ...formState, games: newGameList })
+		} else {
+			const newGameList = [...formState.games];
+			newGameList.push(result);
+			setFormState({ ...formState, games: newGameList });
+		}
+	}
+
 	return (
 		<div className='card-container'>
-			<button type='click' className='container game-card'>
-				<img src={game.background_image} alt={game.name} />
-				<p className='game-card-title'>{game.name}</p>
+			<button
+				onClick={handleClick}
+				type='click'
+				className='container game-card'>
+				<img src={result.background_image} alt={result.name} />
+				<p className='game-card-title'>{result.name}</p>
 			</button>
 		</div>
 	);

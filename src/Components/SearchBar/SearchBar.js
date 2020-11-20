@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { useState } from "react";
 
-const SearchBar = ({ setGames }) => {
+const SearchBar = ({ setResults }) => {
 	const [searchInput, setSearchInput] = useState("");
 
 	let handleSubmit = (event) => {
@@ -14,7 +14,7 @@ const SearchBar = ({ setGames }) => {
         Axios.get(url)
             .then((res) => {
                 console.log(res.data);
-                setGames(res.data.results)
+                setResults(res.data.results)
             })
 	
 };

@@ -2,14 +2,14 @@ import React from "react";
 import CreateCard from "../CreateCard/CreateCard"
 import './CreateResults.css'
 
-const CreateResults = ({ games, setFormState }) => {
+const CreateResults = ({ results, setFormState, formState }) => {
 
     // what info to display on each result
 
 	return (
 		<div className='scrolling-wrapper'>
-			{games.map((game) => {
-                return <CreateCard key={game.id} game={game} setFormState={setFormState} />
+			{results.map((result) => {
+                return <CreateCard key={result.id} result={result} setFormState={setFormState} formState={formState} />
             })}
 		</div>
 	);

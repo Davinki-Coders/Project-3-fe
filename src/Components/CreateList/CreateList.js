@@ -11,8 +11,8 @@ const CreateList = () => {
 		owner: "5fb6ea1e65d38c0017ea6399",
 	};
 
-	const [formState, setFormState] = useState();
-	const [games, setGames] = useState([]);
+	const [formState, setFormState] = useState(emptyForm);
+	const [results, setResults] = useState([]);
 
 	useEffect(() => {
 		axios
@@ -20,26 +20,26 @@ const CreateList = () => {
 				"https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added"
 			)
 			.then((res) => {
-				setGames(res.data.results);
+				setResults(res.data.results);
 			});
 	}, []);
 
-	if (!games) {
+	if (!results) {
 		return <h1>Loading...</h1>;
 	}
 
 	return (
 		<div className='container center' style={{ flexDirection: "column" }}>
-			<form className='form-stack'>
+			{/* <form className='form-stack'>
 				<h1>Create List</h1>
 				<label htmlFor='title'>Title:</label>
 				<input maxLength='40'></input>
 				<label htmlFor='description'>Description:</label>
 				<textarea cols='40' rows='10' maxLength='400'></textarea>
-				<label htmlFor='searchbar'>Search for Games:</label>
-			</form>
-			<SearchBar setGames={setGames} />
-			<CreateResults games={games} setFormState={setFormState} />
+				<label htmlFor='searchbar'>Search Games:</label>
+			</form> */}
+			<SearchBar setResults={setResults} />
+			<CreateResults results={results} formState={formState} setFormState={setFormState} />
 		</div>
 	);
 };

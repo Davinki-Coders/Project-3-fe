@@ -3,9 +3,14 @@
     overflow-y: hidden;
     white-space: nowrap;
     max-width: 90%;
+  
 }
 
 .scrolling-wrapper .card-container {
     display: inline-block;
 
+}
+
+.scrolling-wrapper .card-container img {
+    height: 150px;
 }
