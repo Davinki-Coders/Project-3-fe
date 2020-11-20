@@ -8,7 +8,10 @@ import { AppContext } from '../../AppContext';
 //DUMMY COMPONENT FOR STYLING, DO NOT USE, FORM FIELDS WILL BE CONVERTED TO CUSTOM COMPONENTS
 const SignUp = () => {
 	const history = useHistory();
-	const { setUserInfo } = useContext(AppContext);
+	const { userInfo, setUserInfo } = useContext(AppContext);
+	if (userInfo) {
+		history.push('/');
+	}
 	const blankForm = {
 		username: '',
 		email: '',
@@ -20,6 +23,7 @@ const SignUp = () => {
 		confirmErr: '',
 	};
 	const [formState, setFormState] = useState(blankForm);
+	const [sent, setSent] = useState(false);
 
 	function doubleCheckForm() {
 		const errs = {};
@@ -129,6 +133,7 @@ const SignUp = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		setSent(true);
 		if (doubleCheckForm()) {
 			const url = 'https://davinkibackend.herokuapp.com/api/users/signup';
 			Axios({
@@ -148,12 +153,19 @@ const SignUp = () => {
 							email: formState.email,
 							password: formState.password,
 						},
-					})
-						.then((res) => setUserInfo(res.data))
-						.then(() => history.push('/'));
+					}).then((res) => {
+						setUserInfo({
+							username: res.data.username,
+							_id: res.data._id,
+							email: res.data.email,
+						});
+						localStorage.setItem('token', res.data.token);
+					});
 				})
+				.then(() => history.push('/'))
 				.catch(console.error);
 		} else {
+			setSent(false);
 			console.log('invalid form');
 		}
 	}
@@ -194,7 +206,9 @@ const SignUp = () => {
 					err={formState.confirmErr}
 					handleChange={validatePassword}
 				/>
-				<button type='submit'>Submit</button>
+				<button type='submit' disabled={sent}>
+					Submit
+				</button>
 				<button className='err' type='click' onClick={handleCancel}>
 					Cancel
 				</button>
