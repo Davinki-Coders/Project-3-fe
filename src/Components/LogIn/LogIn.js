@@ -37,15 +37,18 @@ const LogIn = () => {
 		const url = 'https://davinkibackend.herokuapp.com/api/users/login';
 		if (doubleCheckForm()) {
 			Axios({
-				method: 'post', 
+				method: 'post',
 				url: url,
 				data: {
 					email: formState.email,
-					password: formState.password
-				}	
+					password: formState.password,
+				},
 			})
-			.then(res => setUserInfo(res.data))
-			.catch(console.error)
+				.then((res) => {
+					setUserInfo(res.data);
+					history.push('/');
+				})
+				.catch(console.error);
 		} else {
 			console.log('invalid form');
 		}

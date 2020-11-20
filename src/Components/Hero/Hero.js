@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Hero.css';
+import { AppContext } from '../../AppContext';
 
 const Hero = () => {
 	const history = useHistory();
-
+	const { userInfo } = useContext(AppContext);
 	let handleClick = (e) => {
 		e.preventDefault();
 		history.push('/signup');
@@ -20,8 +21,11 @@ const Hero = () => {
 						accusantium culpa doloribus sit. Unde suscipit ullam voluptatibus.
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
-					<button onClick={handleClick}>Sign Up</button>
-
+					{userInfo ? (
+						`Welcome ${userInfo.username}!`
+					) : (
+						<button onClick={handleClick}>Sign Up</button>
+					)}
 				</div>
 			</div>
 		</div>
