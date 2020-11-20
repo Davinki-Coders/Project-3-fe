@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import CreateResults from "../CreateResults/CreateResults";
+import CreateCard from "../CreateCard/CreateCard";
 import axios from "axios";
 
 const CreateList = () => {
@@ -39,7 +40,16 @@ const CreateList = () => {
 				<label htmlFor='searchbar'>Search Games:</label>
 			</form> */}
 			<SearchBar setResults={setResults} />
-			<CreateResults results={results} formState={formState} setFormState={setFormState} />
+			<CreateResults
+				results={results}
+				formState={formState}
+				setFormState={setFormState}
+			/>
+			<div className='container'>
+				{formState.games.map((game) => (
+					<CreateCard selected={true} result={game} setFormState={setFormState} formState={formState} />
+				))}
+			</div>
 		</div>
 	);
 };
