@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../SignUp/SignUp.css';
 import FormField from '../FormField/FormField';
 import { useHistory } from 'react-router-dom';
+import { AppContext } from '../../AppContext';
+import Axios from 'axios';
 
 const LogIn = () => {
+	const { setUserInfo } = useContext(AppContext);
 	const history = useHistory();
 	const blankForm = {
 		email: '',
@@ -31,8 +34,18 @@ const LogIn = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		const url = 'https://davinkibackend.herokuapp.com/api/users/login';
 		if (doubleCheckForm()) {
-			console.log(formState);
+			Axios({
+				method: 'post', 
+				url: url,
+				data: {
+					email: formState.email,
+					password: formState.password
+				}	
+			})
+			.then(res => setUserInfo(res.data))
+			.catch(console.error)
 		} else {
 			console.log('invalid form');
 		}

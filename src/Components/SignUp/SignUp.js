@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SignUp.css';
 import FormField from '../FormField/FormField';
 import { useHistory } from 'react-router-dom';
+import Axios from 'axios';
+import { AppContext } from '../../AppContext'
+
 //DUMMY COMPONENT FOR STYLING, DO NOT USE, FORM FIELDS WILL BE CONVERTED TO CUSTOM COMPONENTS
 const SignUp = () => {
 	const history = useHistory();
+	const { setUserInfo } = useContext(AppContext)
 	const blankForm = {
 		username: '',
 		email: '',
@@ -126,7 +130,18 @@ const SignUp = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (doubleCheckForm()) {
-			console.log(formState);
+		const url = 'https://davinkibackend.herokuapp.com/api/users/signup';
+			Axios({
+				method: 'post', 
+				url: url,
+				data: {
+					username: formState.username,
+					email: formState.email,
+					password: formState.password
+				}
+			})
+			.then(res => setUserInfo(res.data))
+			.catch(console.error)
 		} else {
 			console.log('invalid form');
 		}
