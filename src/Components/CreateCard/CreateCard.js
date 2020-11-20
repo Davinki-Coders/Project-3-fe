@@ -1,15 +1,15 @@
 import React from "react";
-import "./GameCard.css";
+import "./CreateCard.css";
 
-const GameCard = ({ game }) => {
+const CreateCard = ({ game, setFormState }) => {
 	return (
 		<div className='card-container'>
-			<a href={`../games/${game.id}`} className='container game-card'>
+			<button type='click' className='container game-card'>
 				<img src={game.background_image} alt={game.name} />
 				<p className='game-card-title'>{game.name}</p>
-			</a>
+			</button>
 		</div>
 	);
 };
 
-export default GameCard;
+export default CreateCard;
