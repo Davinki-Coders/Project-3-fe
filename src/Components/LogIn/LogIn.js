@@ -6,8 +6,12 @@ import { AppContext } from '../../AppContext';
 import Axios from 'axios';
 
 const LogIn = () => {
-	const { setUserInfo } = useContext(AppContext);
+	const { userInfo, setUserInfo } = useContext(AppContext);
+	const [sent, setSent] = useState(false);
 	const history = useHistory();
+	if (userInfo) {
+		history.push('/');
+	}
 	const blankForm = {
 		email: '',
 		password: '',
@@ -34,6 +38,7 @@ const LogIn = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		setSent(true);
 		const url = 'https://davinkibackend.herokuapp.com/api/users/login';
 		if (doubleCheckForm()) {
 			Axios({
@@ -45,11 +50,17 @@ const LogIn = () => {
 				},
 			})
 				.then((res) => {
-					setUserInfo(res.data);
-					history.push('/');
+					setUserInfo({
+						username: res.data.username,
+						_id: res.data._id,
+						email: res.data.email,
+					});
+					localStorage.setItem('token', res.data.token);
 				})
+				.then(() => history.push('/'))
 				.catch(console.error);
 		} else {
+			setSent(false);
 			console.log('invalid form');
 		}
 	}
@@ -90,7 +101,9 @@ const LogIn = () => {
 					err={formState.passwordErr}
 					handleChange={handleChange}
 				/>
-				<button type='submit'>Submit</button>
+				<button type='submit' disabled={sent}>
+					Submit
+				</button>
 				<button className='err' type='click' onClick={handleCancel}>
 					Cancel
 				</button>
