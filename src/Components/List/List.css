@@ -19,6 +19,7 @@ p {
 
 .user-list h3,
 p {
+	padding: 0 5px;
 	font-size: 15px;
 	color: lightgray;
 }

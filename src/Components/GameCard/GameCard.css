@@ -1,6 +1,6 @@
 .game-card {
 	display: grid;
-	grid-template-rows: auto 3fr 2fr !important;
+	grid-template-rows: auto 2fr !important;
 	color: white;
 	background-color: #303030;
 	align-items: center;
@@ -13,15 +13,6 @@
 	margin: 0;
 	grid-row: 2;
 	background-color: #303030;
-}
-
-.game-card-dev {
-	display: block;
-	padding: 2.5px 5px;
-	margin: 0;
-	grid-row: 3;
-	background-color: #303030;
-	font-size: 0.5rem;
 }
 
 .game-card img {
@@ -41,15 +32,6 @@
 		margin: 0;
 		grid-row: 2;
 		background-color: #303030;
-	}
-
-	.game-card-dev {
-		display: block;
-		padding: 2.5px 5px;
-		margin: 0;
-		grid-row: 3;
-		background-color: #303030;
-		font-size: 0.7rem;
 	}
 }
 

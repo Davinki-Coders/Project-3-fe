@@ -4,35 +4,28 @@ import axios from 'axios';
 import './List.css';
 
 const List = ({ id }) => {
-	const [games, setGames] = useState([]);
-	console.log(id);
-	//Rodrigo - Stopped here because we do not have a get route for a single list by id. Will continue that tomorrow.
-	const fakeList = {
-		title: 'Great Game',
-		owner: 'Jake',
-		description:
-			'A list of games that does not exist because this is dummy data for layout development',
-		games: [],
-	};
+	const [list, setList] = useState({});
 
 	useEffect(() => {
-		axios.get('/test-data.json').then((res) => {
-			console.log(res.data.games);
-			setGames(res.data.games);
-		});
+		axios
+			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
+			.then((res) => {
+				console.log(res.data);
+				setList(res.data[0]);
+			});
 	}, []);
 
-	if (!games) {
+	if (!list.title) {
 		return <h1>Loading...</h1>;
 	}
 
 	return (
-		<div class='user-list'>
-			<h2>{fakeList.title}</h2>
-			<h3>by {fakeList.owner}</h3>
-			<p>{fakeList.description}</p>
+		<div className='user-list'>
+			<h2>{list.title}</h2>
+			<h3>by {list.author}</h3>
+			<p>{list.description}</p>
 			<div className='user-list-container'>
-				{games.map((game, index) => (
+				{list.games.map((game, index) => (
 					<GameCard game={game} key={index} />
 				))}
 			</div>
