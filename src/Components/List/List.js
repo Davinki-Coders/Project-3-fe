@@ -1,36 +1,32 @@
-import React, { useState, useEffect } from "react";
-import GameCard from "../GameCard/GameCard";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import GameCard from '../GameCard/GameCard';
+import axios from 'axios';
+import './List.css';
 
-const List = () => {
-	const [games, setGames] = useState([]);
-
-	const fakeList = {
-		title: "Great Game",
-		owner: "Jake",
-		description: "description here",
-		games: [],
-	};
+const List = ({ id }) => {
+	const [list, setList] = useState({});
 
 	useEffect(() => {
-		axios.get("/test-data.json").then((res) => {
-            console.log(res.data.games);
-			setGames(res.data.games);
-		});
-    }, []);
-    
-    if (!games) {
-        return <h1>Loading...</h1>
-    }
+		axios
+			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
+			.then((res) => {
+				console.log(res.data);
+				setList(res.data[0]);
+			});
+	}, []);
+
+	if (!list.title) {
+		return <h1>Loading...</h1>;
+	}
 
 	return (
-		<div>
-			<h1>{fakeList.title}</h1>
-			<h2>{fakeList.owner}</h2>
-			<p>{fakeList.description}</p>
-			<div className='container'>
-				{games.map((game) => (
-					<GameCard game={game} />
+		<div className='user-list'>
+			<h2>{list.title}</h2>
+			<h3>by {list.author}</h3>
+			<p>{list.description}</p>
+			<div className='user-list-container'>
+				{list.games.map((game, index) => (
+					<GameCard game={game} key={index} />
 				))}
 			</div>
 		</div>

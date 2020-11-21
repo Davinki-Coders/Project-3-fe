@@ -1,26 +1,29 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'
-import './ListCard.css'
+import { useHistory } from 'react-router-dom';
+import './ListCard.css';
 
+const ListCard = ({ list }) => {
+	const history = useHistory();
 
-const ListCard = ({collection}) => {
-    const history = useHistory()
-    const id = 50738; // game id, will be list id
+	let handleClick = (e) => {
+		e.preventDefault();
+		history.push(`/lists/${list._id}`);
+	};
 
-    let handleClick = (e) => {
-        e.preventDefault()
-        history.push(`/lists/${id}`)
-    }
+	if (!list.title) {
+		return 'loading';
+	}
 
-    return (
-        <div className="container list-card" onClick={handleClick}>
-            <img src={collection.image} />
-        <div className="list-card-info">
-            <p className="list-card-title">{collection.listName}</p>
-            <p className="list-card-author">{collection.author}</p>
-        </div>
-        </div>
-    );
+	return (
+		<div className='container list-card' onClick={handleClick}>
+			<img src={list.games[0].image} alt={list.title} />
+			<div className='list-card-info'>
+				<p className='list-card-title'>{list.title}</p>
+				<p className='list-card-author'>{list.author}</p>
+				{/*IMPORTANT!! WE ACTUALLY DO NEED A LIST AUTHOR IN THE SCHEMA LOL MY BAD*/}
+			</div>
+		</div>
+	);
 };
 
 export default ListCard;

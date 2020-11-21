@@ -5,7 +5,7 @@ const RecentLists = ({ lists }) => {
 	return (
 		<div className='container'>
 			{lists.map((list, index) => (
-				<ListCard key={index} collection={list} />
+				<ListCard key={index} list={list} />
 			))}
 		</div>
 	);

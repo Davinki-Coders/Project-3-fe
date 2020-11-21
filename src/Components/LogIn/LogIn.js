@@ -57,8 +57,8 @@ const LogIn = () => {
 					});
 					localStorage.setItem('token', res.data.token);
 				})
-				.then(() => history.push('/'))
-				.catch(console.error);
+				.catch(console.error)
+				.finally(() => history.push('/'));
 		} else {
 			setSent(false);
 			console.log('invalid form');

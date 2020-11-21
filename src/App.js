@@ -1,5 +1,4 @@
 import './App.css';
-import GameCard from './Components/GameCard/GameCard';
 import Nav from './Components/Nav/Nav';
 import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
@@ -9,8 +8,6 @@ import List from './Components/List/List';
 import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
-
-
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -36,7 +33,11 @@ function App() {
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route path='/games' component={GameInfo} />
-						<Route path='/lists/:id' component={List} />
+						<Route
+							exact
+							path='/lists/:id'
+							render={(props) => <List id={props.match.params.id} />}
+						/>
 					</div>
 				</div>
 			</AppContext.Provider>

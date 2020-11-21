@@ -1,19 +1,23 @@
 .list-card {
-    height: 250px;
-    flex-direction: row;
+	height: 270px;
+	flex-direction: row;
+	background-color: #303030;
+	margin: 3px 0;
+	max-width: 100%;
 }
 .list-card img {
-    max-height: 200px;
-    width: 100%;
-    object-fit: cover;
+	max-height: 200px;
+	width: 100%;
+	object-fit: cover;
 }
 .list-card-title {
-  font-size: 25px;
-  display: block;
-  margin: 3px 0;
+	font-size: 20px;
+	display: block;
+	margin: 3px 0;
+	height: 25px;
 }
 .list-card-author {
-    display: block;
-    margin: 3px 0;
-   
+	font-size: 18px;
+	display: block;
+	margin: 3px 0;
 }
