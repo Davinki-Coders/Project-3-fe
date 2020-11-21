@@ -29,12 +29,6 @@ const Hero = () => {
 				)}
 			</div></div>
 		</div>
-
-		// <div className='container hero-image'>
-		// 	<div className='center'>
-		// 		
-		// 	</div>
-		// </div>
 	);
 };
 
