@@ -1,7 +1,8 @@
 .list-card {
-	height: 230px;
+	height: 260px;
 	flex-direction: row;
 	background-color: #4a4a4a;
+	margin: 3px 0;
 }
 .list-card img {
 	max-height: 200px;
@@ -13,8 +14,10 @@
 	display: block;
 	margin: 3px 0;
 	overflow: scroll;
+	height: 25px;
 }
 .list-card-author {
+	font-size: 10px;
 	display: block;
 	margin: 3px 0;
 }
