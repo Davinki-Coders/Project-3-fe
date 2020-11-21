@@ -3,20 +3,19 @@ import RecentLists from '../RecentLists/RecentLists';
 import { Link } from 'react-router-dom';
 import Hero from '../Hero/Hero';
 import './Home.css';
+import axios from 'axios';
 
 const Home = () => {
-	const [newLists, setNewLists] = useState([]);
+	const [recentLists, setRecentLists] = useState([]);
 
 	useEffect(() => {
-		fetch('/test-data.json')
-			.then((res) => res.json())
-			.then((resjson) => {
-				const list = [];
-				for (let i = 0; i < 10; i++) {
-					list.push(resjson.list);
-				}
-				setNewLists(list);
-			});
+		axios.get('https://davinkibackend.herokuapp.com/api/lists').then((res) => {
+			const list = [];
+			for (let i = 0; i < 3; i++) {
+				list.push(res.data[0]);
+			}
+			setRecentLists(list);
+		});
 	}, []);
 	return (
 		<div className='home'>
@@ -25,7 +24,7 @@ const Home = () => {
 				<h2>Recently Created:</h2>
 				<Link to='/lists'>Browse More</Link>
 			</div>
-			<RecentLists lists={newLists} />
+			<RecentLists lists={recentLists} />
 		</div>
 	);
 };

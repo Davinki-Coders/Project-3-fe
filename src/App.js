@@ -10,8 +10,6 @@ import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 
-
-
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
 	const [userInfo, setUserInfo] = useState();
@@ -36,7 +34,11 @@ function App() {
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route path='/games' component={GameInfo} />
-						<Route path='/lists/:id' component={List} />
+						<Route
+							exact
+							path='/lists/:id'
+							render={(props) => <List id={props.match.params.id} />}
+						/>
 					</div>
 				</div>
 			</AppContext.Provider>
