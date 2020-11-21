@@ -1,14 +1,13 @@
-import "./App.css";
-import GameCard from "./Components/GameCard/GameCard";
-import Nav from "./Components/Nav/Nav";
-import Home from "./Components/Home/Home";
-import { Route, Link } from "react-router-dom";
-import SignUp from "./Components/SignUp/SignUp";
-import GameInfo from "./Components/GameInfo/GameInfo";
-import List from "./Components/List/List";
-import LogIn from "./Components/LogIn/LogIn";
-import React, { useState } from "react";
-import { AppContext } from "./AppContext";
+import './App.css';
+import Nav from './Components/Nav/Nav';
+import Home from './Components/Home/Home';
+import { Route, Link } from 'react-router-dom';
+import SignUp from './Components/SignUp/SignUp';
+import GameInfo from './Components/GameInfo/GameInfo';
+import List from './Components/List/List';
+import LogIn from './Components/LogIn/LogIn';
+import React, { useState } from 'react';
+import { AppContext } from './AppContext';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU

@@ -5,18 +5,17 @@
 	width: 36px;
 	height: 30px;
 	right: 20px;
-	top: 37px;
+	top: 20px;
+	color: white !important;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-	background: white;
+	background: white !important;
+	opacity: 1 !important;
 }
 
 /* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-	filter: brightness(1.2);
-}
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
