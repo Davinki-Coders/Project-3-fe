@@ -1,5 +1,4 @@
 import './App.css';
-import GameCard from './Components/GameCard/GameCard';
 import Nav from './Components/Nav/Nav';
 import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
