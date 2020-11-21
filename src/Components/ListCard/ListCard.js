@@ -19,7 +19,7 @@ const ListCard = ({ list }) => {
 			<img src={list.games[0].image} alt={list.title} />
 			<div className='list-card-info'>
 				<p className='list-card-title'>{list.title}</p>
-				<p className='list-card-author'>{list.owner}</p>
+				<p className='list-card-author'>{list.author}</p>
 				{/*IMPORTANT!! WE ACTUALLY DO NEED A LIST AUTHOR IN THE SCHEMA LOL MY BAD*/}
 			</div>
 		</div>
