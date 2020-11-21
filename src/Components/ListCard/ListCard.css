@@ -1,7 +1,7 @@
 .list-card {
 	height: 260px;
 	flex-direction: row;
-	background-color: #4a4a4a;
+	background-color: #303030;
 	margin: 3px 0;
 }
 .list-card img {

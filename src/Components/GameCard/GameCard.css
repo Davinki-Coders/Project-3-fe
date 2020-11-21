@@ -1,9 +1,10 @@
 .game-card {
-	flex-direction: column;
-	margin: 5px;
+	margin: 0;
 	padding: 0;
-	max-width: 100px;
+	max-width: 1fr;
+	height: 220px;
 	color: white;
+	background-color: #303030;
 }
 
 @media (hover: hover) {
@@ -16,18 +17,21 @@
 
 .game-card img {
 	display: block;
-	margin: 3px 0;
+	height: 180px;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
 }
 
 .game-card-title {
 	display: block;
-	margin: 3px 0;
+	margin: 3px;
 	font-size: 0.7rem;
 	overflow: scroll;
 }
 
 .game-card-dev {
 	display: block;
-	margin: 3px 0;
-	font-size: 0.4rem;
+	margin: 3px;
+	font-size: 0.5rem;
 }

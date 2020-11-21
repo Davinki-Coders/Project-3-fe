@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '../GameCard/GameCard';
 import axios from 'axios';
+import './List.css';
 
 const List = ({ id }) => {
 	const [games, setGames] = useState([]);
@@ -9,7 +10,8 @@ const List = ({ id }) => {
 	const fakeList = {
 		title: 'Great Game',
 		owner: 'Jake',
-		description: 'description here',
+		description:
+			'A list of games that does not exist because this is dummy data for layout development',
 		games: [],
 	};
 
@@ -25,13 +27,13 @@ const List = ({ id }) => {
 	}
 
 	return (
-		<div>
-			<h1>{fakeList.title}</h1>
-			<h2>{fakeList.owner}</h2>
+		<div class='user-list'>
+			<h2>{fakeList.title}</h2>
+			<h3>by {fakeList.owner}</h3>
 			<p>{fakeList.description}</p>
-			<div className='container'>
-				{games.map((game) => (
-					<GameCard game={game} />
+			<div className='user-list-container'>
+				{games.map((game, index) => (
+					<GameCard game={game} key={index} />
 				))}
 			</div>
 		</div>
