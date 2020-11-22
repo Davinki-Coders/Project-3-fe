@@ -49,8 +49,9 @@ const GameInfo = ({ id }) => {
 						Metacritic Page
 					</a>
 					<h3>Purchase:</h3>
-					{gameInfo.stores.map((store) => (
+					{gameInfo.stores.map((store, index) => (
 						<a
+							key={index}
 							className='game-info-store'
 							href={store.url}
 							target='_blank'
@@ -75,7 +76,7 @@ const GameInfo = ({ id }) => {
 				width='100%'
 				height='auto'
 				className='react-player'
-				url='https://media.rawg.io/media/stories/e3c/e3c7fed123159b9bcfffad0454a0f87f.mp4'
+				url={gameInfo.clip.clips.full}
 				controls={true}
 			/>
 		</div>

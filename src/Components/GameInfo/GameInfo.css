@@ -52,3 +52,9 @@
 	display: inline-block;
 	margin: 5px 10px 0 0;
 }
+
+@media (max-width: 750px) {
+	.game-info-screen {
+		font-size: 80%;
+	}
+}
