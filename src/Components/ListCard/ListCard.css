@@ -1,9 +1,11 @@
 .list-card {
-	height: 270px;
-	flex-direction: row;
+	max-height: 300px;
+	display: grid;
 	background-color: #303030;
 	margin: 3px 0;
+	padding: 0;
 	max-width: 100%;
+	grid-template-rows: auto 1fr 1fr;
 }
 .list-card img {
 	max-height: 200px;
@@ -14,10 +16,12 @@
 	font-size: 20px;
 	display: block;
 	margin: 3px 0;
-	height: 25px;
+	text-align: left;
+	color: white;
 }
 .list-card-author {
 	font-size: 18px;
 	display: block;
 	margin: 3px 0;
+	text-align: left;
 }

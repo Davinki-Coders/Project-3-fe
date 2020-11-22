@@ -11,6 +11,7 @@ const Home = () => {
 	useEffect(() => {
 		axios.get('https://davinkibackend.herokuapp.com/api/lists').then((res) => {
 			const list = [];
+			//update this to only show like 3-5 lists
 			for (let i = 0; i < 3; i++) {
 				list.push(res.data[0]);
 			}

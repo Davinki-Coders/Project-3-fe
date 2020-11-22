@@ -15,14 +15,11 @@ const ListCard = ({ list }) => {
 	}
 
 	return (
-		<div className='container list-card' onClick={handleClick}>
+		<button type='click' className='list-card' onClick={handleClick}>
 			<img src={list.games[0].image} alt={list.title} />
-			<div className='list-card-info'>
-				<p className='list-card-title'>{list.title}</p>
-				<p className='list-card-author'>{list.author}</p>
-				{/*IMPORTANT!! WE ACTUALLY DO NEED A LIST AUTHOR IN THE SCHEMA LOL MY BAD*/}
-			</div>
-		</div>
+			<p className='list-card-title'>{list.title}</p>
+			<p className='list-card-author'>by {list.author}</p>
+		</button>
 	);
 };
 
