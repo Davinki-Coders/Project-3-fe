@@ -32,7 +32,11 @@ function App() {
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/games' component={GameInfo} />
+						<Route
+							exact
+							path='/games/:id'
+							render={(props) => <GameInfo id={props.match.params.id} />}
+						/>
 						<Route
 							exact
 							path='/lists/:id'
