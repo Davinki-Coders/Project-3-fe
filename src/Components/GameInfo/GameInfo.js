@@ -12,6 +12,7 @@ const GameInfo = ({ id }) => {
 		axios.get(url).then((game) => {
 			setGameInfo(game.data);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (!gameInfo) {
