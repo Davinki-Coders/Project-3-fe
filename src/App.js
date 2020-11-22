@@ -1,4 +1,5 @@
 import './App.css';
+// import GameCard from './Components/GameCard/GameCard';
 import Nav from './Components/Nav/Nav';
 import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
@@ -8,6 +9,7 @@ import List from './Components/List/List';
 import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
+import CreateList from './Components/CreateList/CreateList'
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -28,7 +30,7 @@ function App() {
           components that are tied to the burger menu*/}
 						<Route path='/' exact component={Home} />
 						<Route path='/lists' />
-						<Route path='/lists/create' />
+						<Route path='/create' component={CreateList} />
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
