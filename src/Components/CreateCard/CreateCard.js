@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./CreateCard.css";
+import React, { useState } from 'react';
+import './CreateCard.css';
 
 const CreateCard = ({
 	result,
@@ -23,14 +23,14 @@ const CreateCard = ({
 	// STRETCH GOAL - main onClick on game button opens modal OR opens in new tab with GameInfo
 
 	return (
-		<div className='card-container'>
-			<button type='click' className='container game-card'>
+		<div className='create-card'>
+			<div className='create-card-grid'>
 				<img src={result.background_image} alt={result.name} />
-				<p className='game-card-title'>{result.name}</p>
-			</button>
-			<button onClick={handleClick}>
-				{!index && index !== 0 ? "Add" : "Remove"}
-			</button>
+				<p className='create-card-title'>{result.name}</p>
+				<button onClick={handleClick}>
+					{!index && index !== 0 ? 'Add' : 'Remove'}
+				</button>
+			</div>
 		</div>
 	);
 };

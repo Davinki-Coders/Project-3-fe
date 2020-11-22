@@ -1,30 +1,28 @@
-.game-card {
-	flex-direction: column;
-
-	max-width: 300px;
-	color: white;
+.create-card {
+	display: inline-block;
+	margin: 0 5px;
 }
 
-@media (hover: hover) {
-	.game-card:hover {
-		text-decoration: none;
-		cursor: pointer;
-		filter: brightness(1.2);
-	}
+.create-card-grid {
+	width: 150px;
+	height: 180px;
+	grid-template-rows: auto 1fr 1fr;
 }
 
-.game-card img {
-	display: block;
-	margin: 3px 0;
+.create-card-grid img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	margin: 0;
 }
 
-.game-card-title {
-	display: block;
-	margin: 3px 0;
-	font-size: 1.3rem;
+.create-card-title {
+	margin: 0;
+	padding: 3px 0 5px 0;
+	overflow: hidden;
 }
 
-.game-card-dev {
-	display: block;
-	margin: 3px 0;
+.create-card-grid button {
+	width: 100%;
+	margin: 0;
 }
