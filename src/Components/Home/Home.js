@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import RecentLists from '../RecentLists/RecentLists';
-import { Link } from 'react-router-dom';
-import Hero from '../Hero/Hero';
-import './Home.css';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import RecentLists from "../RecentLists/RecentLists";
+import { Link } from "react-router-dom";
+import Hero from "../Hero/Hero";
+import "./Home.css";
+import axios from "axios";
 
 const Home = () => {
 	const [recentLists, setRecentLists] = useState([]);
 
 	useEffect(() => {
-		axios.get('https://davinkibackend.herokuapp.com/api/lists').then((res) => {
-			const list = [];
-			//update this to only show like 3-5 lists
-			for (let i = 0; i < 3; i++) {
-				list.push(res.data[0]);
-			}
-			setRecentLists(list);
+		axios.get("https://davinkibackend.herokuapp.com/api/lists").then((res) => {
+			setRecentLists(res.data.slice(Math.max(res.data.length - 4, 0)));
 		});
 	}, []);
+
 	return (
 		<div className='home'>
 			<Hero />

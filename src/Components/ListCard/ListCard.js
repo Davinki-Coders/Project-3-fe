@@ -11,7 +11,7 @@ const ListCard = ({ list }) => {
 	};
 
 	if (!list.title) {
-		return 'loading';
+		return 'Loading...';
 	}
 
 	return (
