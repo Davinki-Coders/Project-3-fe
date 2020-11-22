@@ -71,12 +71,13 @@ const GameInfo = ({ id }) => {
 					</a>
 				</div>
 			</div>
-			<div className='video-wrapper'>
-				<ReactPlayer
-					url='https://media.rawg.io/media/stories/e3c/e3c7fed123159b9bcfffad0454a0f87f.mp4'
-					controls={true}
-				/>
-			</div>
+			<ReactPlayer
+				width='100%'
+				height='auto'
+				className='react-player'
+				url='https://media.rawg.io/media/stories/e3c/e3c7fed123159b9bcfffad0454a0f87f.mp4'
+				controls={true}
+			/>
 		</div>
 	);
 };

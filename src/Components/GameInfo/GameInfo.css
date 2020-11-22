@@ -30,6 +30,7 @@
 
 .game-info-more h3 {
 	margin: 0;
+	max-width: 90%;
 }
 
 .game-info-left {
@@ -37,7 +38,15 @@
 }
 .game-info-right {
 	grid-column: 2;
-	text-align: right;
+	text-align: left;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
 }
 
 .game-info-store {
