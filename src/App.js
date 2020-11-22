@@ -1,5 +1,4 @@
 import './App.css';
-// import GameCard from './Components/GameCard/GameCard';
 import Nav from './Components/Nav/Nav';
 import Home from './Components/Home/Home';
 import { Route, Link } from 'react-router-dom';
@@ -11,13 +10,15 @@ import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList'
 
+
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
 	const [userInfo, setUserInfo] = useState();
 	return (
 		<div className='App' id='outer-container'>
 			<AppContext.Provider value={{ userInfo, setUserInfo }}>
-				<Nav pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
+
+				<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
 				<div id='page-wrap'>
 					<div className='logo-header'>
 						<Link to='/' className='header-link'>
