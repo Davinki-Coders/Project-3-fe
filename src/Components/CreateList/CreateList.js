@@ -21,7 +21,6 @@ const CreateList = () => {
 				"https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added"
 			)
 			.then((res) => {
-				console.log(res.data.results);
 				setResults(res.data.results);
 			});
 	}, []);
@@ -32,14 +31,14 @@ const CreateList = () => {
 
 	return (
 		<div className='container center' style={{ flexDirection: "column" }}>
-			{/* <form className='form-stack'>
+			<form className='form-stack'>
 				<h1>Create List</h1>
 				<label htmlFor='title'>Title:</label>
 				<input maxLength='40'></input>
 				<label htmlFor='description'>Description:</label>
 				<textarea cols='40' rows='10' maxLength='400'></textarea>
 				<label htmlFor='searchbar'>Search Games:</label>
-			</form> */}
+			</form>
 			<SearchBar setResults={setResults} />
 			<CreateResults
 				results={results}
@@ -47,8 +46,15 @@ const CreateList = () => {
 				setFormState={setFormState}
 			/>
 			<div className='container'>
-				{formState.games.map((game) => (
-					<CreateCard selected={true} result={game} setFormState={setFormState} formState={formState} />
+				{formState.games.map((game, index) => (
+					<CreateCard
+						selected={true}
+						result={game}
+						setFormState={setFormState}
+						formState={formState}
+						key={index}
+						index={index}
+					/>
 				))}
 			</div>
 		</div>

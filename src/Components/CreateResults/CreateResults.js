@@ -4,8 +4,6 @@ import './CreateResults.css'
 
 const CreateResults = ({ results, setFormState, formState }) => {
 
-    // what info to display on each result
-
 	return (
 		<div className='scrolling-wrapper'>
 			{results.map((result) => {
