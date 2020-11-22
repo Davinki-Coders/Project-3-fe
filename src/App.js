@@ -19,7 +19,7 @@ function App() {
 				<div id='page-wrap'>
 					<div className='logo-header'>
 						<Link to='/' className='header-link'>
-							<h1>App Name</h1>
+							<h1>Curatr</h1>
 						</Link>
 					</div>
 					<div className='main'>
@@ -32,7 +32,11 @@ function App() {
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/games' component={GameInfo} />
+						<Route
+							exact
+							path='/games/:id'
+							render={(props) => <GameInfo id={props.match.params.id} />}
+						/>
 						<Route
 							exact
 							path='/lists/:id'
