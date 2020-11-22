@@ -17,11 +17,11 @@ const Hero = () => {
 			<NukaCarousel className='hero-box' />
 			<div className='container center hero-box stack'>
 				<div className='hero-text center'>
-					<h1>Big Statement Here</h1>
+					<h1>Curatr</h1>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-						accusantium culpa doloribus sit. Unde suscipit ullam voluptatibus.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						
+						Curate game lists.
+						Share your good tastes. Recommendations galor.
 					</p>
 					{userInfo ? (
 						<h2>{`Welcome ${userInfo.username}!`}</h2>

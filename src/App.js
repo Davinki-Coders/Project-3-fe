@@ -8,8 +8,7 @@ import List from './Components/List/List';
 import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
-import CreateList from './Components/CreateList/CreateList'
-
+import CreateList from './Components/CreateList/CreateList';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -17,7 +16,6 @@ function App() {
 	return (
 		<div className='App' id='outer-container'>
 			<AppContext.Provider value={{ userInfo, setUserInfo }}>
-
 				<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
 				<div id='page-wrap'>
 					<div className='logo-header'>
@@ -48,6 +46,11 @@ function App() {
 					</div>
 				</div>
 			</AppContext.Provider>
+			<footer>
+				Curatr was developed by <a href='https://github.com/Davinki-Coders'> Davinki Coders</a>.
+				Special thanks to <a href='https://api.rawg.io/docs/'>Rawg Api</a> for
+				providing the data used throughout this site.
+			</footer>
 		</div>
 	);
 }
