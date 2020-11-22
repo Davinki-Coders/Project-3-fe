@@ -9,6 +9,7 @@ import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
+import EditList from './Components/EditList/EditList'
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -33,6 +34,7 @@ function App() {
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
+						<Route path='/lists/edit/:id' render={(props) => <EditList id={props.match.params.id} />}/>
 						<Route
 							exact
 							path='/games/:id'
