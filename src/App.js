@@ -9,10 +9,9 @@ import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
-import BrowseLists from './Components/BrowseLists/BrowseLists'
-import UserProfile from './Components/UserProfile/UserProfile'
-import EditList from './Components/EditList/EditList'
-
+import BrowseLists from './Components/BrowseLists/BrowseLists';
+import UserProfile from './Components/UserProfile/UserProfile';
+import EditList from './Components/EditList/EditList';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -43,7 +42,10 @@ function App() {
 						<Route path='/' exact component={Home} />
 						<Route exact path='/lists/' component={BrowseLists} />
 						<Route path='/create' component={CreateList} />
-						<Route path='/user/:id' render={(props) => <UserProfile id={props.match.params.id} />} />
+						<Route
+							path='/user/:id'
+							render={(props) => <UserProfile id={props.match.params.id} />}
+						/>
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route
