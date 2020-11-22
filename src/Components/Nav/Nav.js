@@ -18,7 +18,7 @@ const Nav = (props) => {
 			<Link to='/lists' className='bm-item' href='/lists'>
 				Browse Lists
 			</Link>
-			<Link to='/lists/create' className='bm-item' href='/lists'>
+			<Link to='/create' className='bm-item' href='/lists'>
 				Create List
 			</Link>
 			<Link to='/user' className='bm-item' href='/lists'>

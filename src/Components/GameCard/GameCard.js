@@ -8,6 +8,7 @@ const GameCard = ({ game }) => {
 			<img src={game.image} alt={game.name} />
 			<p className='game-card-title'>{game.name}</p>
 		</Link>
+
 	);
 };
 
