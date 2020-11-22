@@ -1,0 +1,42 @@
+.game-info-screen {
+	padding: 10px;
+	margin: 0 auto;
+	max-width: 900px;
+}
+
+.game-info-hero {
+	max-width: 100%;
+}
+
+.game-info-title {
+	font-size: 3.5rem;
+	margin: 0;
+}
+
+.game-info-dev {
+	margin: 3px 0;
+}
+
+.game-info-section {
+	margin: 0;
+	font-size: 130%;
+}
+
+.game-info-links {
+	margin-top: 10px;
+	gap: 10px;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+.game-info-add-img {
+	grid-column: 1;
+}
+
+.game-info-more {
+	grid-column: 2;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	padding: 0 10px;
+}

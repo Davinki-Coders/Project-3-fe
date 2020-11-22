@@ -10,7 +10,6 @@ const List = ({ id }) => {
 		axios
 			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
 			.then((res) => {
-				console.log(res.data);
 				setList(res.data[0]);
 			});
 	}, []);
