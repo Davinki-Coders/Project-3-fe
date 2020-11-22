@@ -10,7 +10,7 @@ const Home = () => {
 
 	useEffect(() => {
 		axios.get("https://davinkibackend.herokuapp.com/api/lists").then((res) => {
-			setRecentLists(res.data.slice(Math.max(res.data.length - 3, 0)));
+			setRecentLists(res.data.slice(Math.max(res.data.length - 4, 0)));
 		});
 	}, []);
 
