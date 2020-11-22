@@ -19,7 +19,7 @@ function App() {
 				<div id='page-wrap'>
 					<div className='logo-header'>
 						<Link to='/' className='header-link'>
-							<h1>App Name</h1>
+							<h1>Curatr</h1>
 						</Link>
 					</div>
 					<div className='main'>

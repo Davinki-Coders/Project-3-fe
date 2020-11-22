@@ -42,17 +42,40 @@ const GameInfo = ({ id }) => {
 						.join(', ')}
 				</h2>
 			</div>
-			<div className='game-info-links'>
-				<img
-					className='game-info-add-img'
-					src={gameInfo.background_image_additional}
-					alt=''></img>
-				<div className='game-info-more'>
+			<div className='game-info-more'>
+				<div className='game-info-left'>
+					<h3>Overall Rating: {gameInfo.metacritic / 10}/10</h3>
+					<a href={gameInfo.metacritic_url} rel='noreferrer' target='_blank'>
+						Metacritic Page
+					</a>
+					<h3>Purchase:</h3>
+					{gameInfo.stores.map((store) => (
+						<a
+							className='game-info-store'
+							href={store.url}
+							target='_blank'
+							rel='noreferrer'>
+							{' '}
+							{store.store.name}{' '}
+						</a>
+					))}
+				</div>
+				<div className='game-info-right'>
 					<h3>Official Site:</h3>
 					<a href={gameInfo.website} rel='noreferrer' target='_blank'>
 						{gameInfo.website}
 					</a>
+					<h3>Reddit Community:</h3>
+					<a href={gameInfo.reddit_url} rel='noreferrer' target='_blank'>
+						{gameInfo.reddit_url}
+					</a>
 				</div>
+			</div>
+			<div className='video-wrapper'>
+				<ReactPlayer
+					url='https://media.rawg.io/media/stories/e3c/e3c7fed123159b9bcfffad0454a0f87f.mp4'
+					controls={true}
+				/>
 			</div>
 		</div>
 	);

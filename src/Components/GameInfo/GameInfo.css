@@ -22,21 +22,28 @@
 	font-size: 130%;
 }
 
-.game-info-links {
-	margin-top: 10px;
-	gap: 10px;
+.game-info-more {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+	margin: 10px 0;
 }
 
-.game-info-add-img {
+.game-info-more h3 {
+	margin: 0;
+}
+
+.game-info-left {
 	grid-column: 1;
 }
-
-.game-info-more {
+.game-info-right {
 	grid-column: 2;
-	grid-row-start: 1;
-	grid-row-end: 3;
-	padding: 0 10px;
+	text-align: right;
+}
+
+.game-info-store {
+	color: white;
+	background-color: blueviolet;
+	padding: 10px;
+	display: inline-block;
+	margin: 5px 10px 0 0;
 }
