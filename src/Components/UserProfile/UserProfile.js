@@ -3,13 +3,15 @@ import axios from 'axios';
 import RecentLists from '../RecentLists/RecentLists';
 
 const UserProfile = (props) => {
-	const [lists, setLists] = useState([]);
-	const [author, setAuthor] = useState('Loading...');
+	const [lists, setLists] = useState();
+	const [author, setAuthor] = useState();
 	const url = `https://davinkibackend.herokuapp.com/api/lists/author/${props.id}`;
 
 	useEffect(() => {
 		axios.get(url).then((res) => {
-			setAuthor(res.data[0].author);
+			if (res.data.length) {
+				setAuthor(res.data[0].author);
+			}
 			setLists(res.data);
 		});
 	}, [url]);
@@ -18,10 +20,20 @@ const UserProfile = (props) => {
 		return <h1>Loading...</h1>;
 	}
 
+	function checkForLists() {
+		return lists.length && author;
+	}
+
 	return (
 		<div style={{ maxWidth: '900px', margin: '0 auto', padding: '10px' }}>
-			<h2>Lists Curated by {author}:</h2>
-			<RecentLists lists={lists} />
+			{checkForLists() ? (
+				<>
+					<h2>Lists Curated by {author}:</h2>
+					<RecentLists lists={lists} />
+				</>
+			) : (
+				<h2>No lists found!</h2>
+			)}
 		</div>
 	);
 };
