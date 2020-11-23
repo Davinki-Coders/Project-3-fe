@@ -40,6 +40,7 @@ function App() {
           components that are tied to the burger menu*/}
 						<Route path='/' exact component={Home} />
 						<Route exact path='/lists/' component={BrowseLists} />
+
 						<Route path='/create' component={CreateList} />
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
