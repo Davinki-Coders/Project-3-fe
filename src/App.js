@@ -1,18 +1,18 @@
-import './App.css';
-import Nav from './Components/Nav/Nav';
-import Home from './Components/Home/Home';
-import { Route, Link } from 'react-router-dom';
-import SignUp from './Components/SignUp/SignUp';
-import GameInfo from './Components/GameInfo/GameInfo';
-import List from './Components/List/List';
-import LogIn from './Components/LogIn/LogIn';
-import React, { useState } from 'react';
-import { AppContext } from './AppContext';
-import CreateList from './Components/CreateList/CreateList';
-import BrowseLists from './Components/BrowseLists/BrowseLists';
-import UserProfile from './Components/UserProfile/UserProfile';
+import "./App.css";
+import Nav from "./Components/Nav/Nav";
+import Home from "./Components/Home/Home";
+import { Route, Link } from "react-router-dom";
+import SignUp from "./Components/SignUp/SignUp";
+import GameInfo from "./Components/GameInfo/GameInfo";
+import List from "./Components/List/List";
+import LogIn from "./Components/LogIn/LogIn";
+import React, { useState } from "react";
+import { AppContext } from "./AppContext";
+import CreateList from "./Components/CreateList/CreateList";
+import BrowseLists from "./Components/BrowseLists/BrowseLists";
+import UserProfile from "./Components/UserProfile/UserProfile";
 
-import EditList from './Components/EditList/EditList';
+import EditList from "./Components/EditList/EditList";
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -20,8 +20,8 @@ function App() {
 
 	if (!userInfo) {
 		const storedUser = {
-			username: localStorage.getItem('curatr_user'),
-			_id: localStorage.getItem('curatr_id'),
+			username: localStorage.getItem("curatr_user"),
+			_id: localStorage.getItem("curatr_id"),
 		};
 		if (storedUser.username && storedUser._id) {
 			setUserInfo(storedUser);
@@ -31,7 +31,7 @@ function App() {
 	return (
 		<div className='App' id='outer-container'>
 			<AppContext.Provider value={{ userInfo, setUserInfo }}>
-				<Nav pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+				<Nav pageWrapId={"page-wrap"} outerContainerId={"outer-container"} />
 				<div id='page-wrap'>
 					<div className='logo-header'>
 						<Link to='/' className='header-link'>
@@ -57,10 +57,6 @@ function App() {
 							render={(props) => <EditList id={props.match.params.id} />}
 						/>
 						<Route
-							path='/lists/edit/:id'
-							render={(props) => <EditList id={props.match.params.id} />}
-						/>
-						<Route
 							exact
 							path='/games/:id'
 							render={(props) => <GameInfo id={props.match.params.id} />}
@@ -74,7 +70,7 @@ function App() {
 				</div>
 			</AppContext.Provider>
 			<footer>
-				Curatr was developed by{' '}
+				Curatr was developed by{" "}
 				<a href='https://github.com/Davinki-Coders'> Davinki Coders</a>. Special
 				thanks to <a href='https://api.rawg.io/docs/'>Rawg Api</a> for providing
 				the data used throughout this site.
