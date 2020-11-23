@@ -9,11 +9,20 @@ import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
-import EditList from './Components/EditList/EditList'
+import EditList from './Components/EditList/EditList';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
 	const [userInfo, setUserInfo] = useState();
+
+	if (!userInfo) {
+		const storedUser = {
+			username: localStorage.getItem('curatr_user'),
+			_id: localStorage.getItem('curatr_id'),
+		};
+		setUserInfo(storedUser);
+	}
+
 	return (
 		<div className='App' id='outer-container'>
 			<AppContext.Provider value={{ userInfo, setUserInfo }}>
@@ -34,7 +43,10 @@ function App() {
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/lists/edit/:id' render={(props) => <EditList id={props.match.params.id} />}/>
+						<Route
+							path='/lists/edit/:id'
+							render={(props) => <EditList id={props.match.params.id} />}
+						/>
 						<Route
 							exact
 							path='/games/:id'
@@ -49,9 +61,10 @@ function App() {
 				</div>
 			</AppContext.Provider>
 			<footer>
-				Curatr was developed by <a href='https://github.com/Davinki-Coders'> Davinki Coders</a>.
-				Special thanks to <a href='https://api.rawg.io/docs/'>Rawg Api</a> for
-				providing the data used throughout this site.
+				Curatr was developed by{' '}
+				<a href='https://github.com/Davinki-Coders'> Davinki Coders</a>. Special
+				thanks to <a href='https://api.rawg.io/docs/'>Rawg Api</a> for providing
+				the data used throughout this site.
 			</footer>
 		</div>
 	);
