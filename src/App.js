@@ -10,6 +10,8 @@ import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
 import BrowseLists from './Components/BrowseLists/BrowseLists';
+import UserProfile from './Components/UserProfile/UserProfile';
+
 import EditList from './Components/EditList/EditList';
 
 function App() {
@@ -42,11 +44,18 @@ function App() {
           components that are tied to the burger menu*/}
 						<Route path='/' exact component={Home} />
 						<Route exact path='/lists/' component={BrowseLists} />
-
 						<Route path='/create' component={CreateList} />
-						<Route path='/user' />
+						<Route
+							exact
+							path='/user/:id'
+							render={(props) => <UserProfile id={props.match.params.id} />}
+						/>
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
+						<Route
+							path='/lists/edit/:id'
+							render={(props) => <EditList id={props.match.params.id} />}
+						/>
 						<Route
 							path='/lists/edit/:id'
 							render={(props) => <EditList id={props.match.params.id} />}

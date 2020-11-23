@@ -27,7 +27,9 @@ const List = ({ id }) => {
 	return (
 		<div className='user-list'>
 			<h2>{list.title}</h2>
-			<h3>by {list.author}</h3>
+			<h3>
+				by <Link to={'/user/' + list.owner}> {list.author}</Link>
+			</h3>
 			<p>{list.description}</p>
 			{currentUser === list.owner ? (
 				<Link to={'/lists/edit/' + id}>Edit List</Link>
