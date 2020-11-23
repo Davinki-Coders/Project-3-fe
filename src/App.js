@@ -56,6 +56,10 @@ function App() {
 							render={(props) => <EditList id={props.match.params.id} />}
 						/>
 						<Route
+							path='/lists/edit/:id'
+							render={(props) => <EditList id={props.match.params.id} />}
+						/>
+						<Route
 							exact
 							path='/games/:id'
 							render={(props) => <GameInfo id={props.match.params.id} />}
