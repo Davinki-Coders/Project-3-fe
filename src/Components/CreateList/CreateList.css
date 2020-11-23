@@ -2,6 +2,7 @@
 	display: grid;
 	max-width: 900px;
 	margin: 0 auto;
+	padding: 10px;
 }
 
 .create-list textarea {
@@ -22,13 +23,6 @@
 
 .create-list-list {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: repeat((auto-fill), 400px);
-	background-color: #303030;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-
-.create-list-list .create-card {
-	display: block;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: repeat((autofill, 180px));
 }

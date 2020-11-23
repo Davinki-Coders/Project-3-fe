@@ -1,10 +1,9 @@
 .create-card {
 	display: inline-block;
-	margin: 0 5px;
+	margin: 5px;
 }
 
 .create-card-grid {
-	width: 150px;
 	grid-template-rows: auto 1fr 1fr;
 	align-content: center;
 	margin: 0 auto;
