@@ -19,7 +19,7 @@ const UserProfile = (props) => {
 	}
 
 	return (
-		<div>
+		<div style={{ maxWidth: '900px', margin: '0 auto', padding: '10px' }}>
 			<h2>Lists Curated by {author}:</h2>
 			<RecentLists lists={lists} />
 		</div>
