@@ -7,7 +7,7 @@
 }
 .user-list {
 	padding: 0 15px;
-	max-width: 600px;
+	max-width: 900px;
 	margin: 0 auto;
 }
 
@@ -22,4 +22,12 @@ p {
 	padding: 0 5px;
 	font-size: 15px;
 	color: lightgray;
+}
+
+@media (min-width: 700px) {
+	.user-list,
+	.user-list h3,
+	p {
+		font-size: 120%;
+	}
 }

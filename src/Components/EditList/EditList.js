@@ -23,7 +23,6 @@ const EditList = ({ id }) => {
 		axios
 			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
 			.then((res) => {
-<<<<<<< HEAD
 				console.log(res.data);
 				setFormState(res.data[0]);
 			});
@@ -34,18 +33,6 @@ const EditList = ({ id }) => {
 			.then((res) => {
 				setResults(res.data.results);
 			});
-=======
-                console.log(res.data)
-				setFormState(res.data[0]);
-			});
-			axios
-				.get(
-					'https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added'
-				)
-				.then((res) => {
-					setResults(res.data.results);
-				});
->>>>>>> edit list is almost done
 	}, []);
 
 	if (!results) {
