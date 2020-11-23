@@ -9,13 +9,9 @@ const SearchBar = ({ setResults }) => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// FINISH THIS FIRST
-		// axios call here
-		// set & clear search input w/ state above
 		let url = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_KEY}&page_size=50&search=${searchInput}`;
 
 		Axios.get(url).then((res) => {
-			console.log(res.data);
 			setResults(res.data.results);
 		});
 	};
