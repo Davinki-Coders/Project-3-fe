@@ -12,7 +12,7 @@ const UserProfile = (props) => {
 			setAuthor(res.data[0].author);
 			setLists(res.data);
 		});
-	}, []);
+	}, [url]);
 
 	if (!lists) {
 		return <h1>Loading...</h1>;

@@ -12,7 +12,6 @@ import CreateList from './Components/CreateList/CreateList';
 import BrowseLists from './Components/BrowseLists/BrowseLists';
 import UserProfile from './Components/UserProfile/UserProfile';
 import EditList from './Components/EditList/EditList';
-import UserProfile from './Components/UserProfile/UserProfile';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -46,6 +45,7 @@ function App() {
 						<Route exact path='/lists/' component={BrowseLists} />
 						<Route path='/create' component={CreateList} />
 						<Route
+							exact
 							path='/user/:id'
 							render={(props) => <UserProfile id={props.match.params.id} />}
 						/>
