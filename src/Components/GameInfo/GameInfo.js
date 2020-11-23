@@ -28,19 +28,21 @@ const GameInfo = ({ id }) => {
 			<h1 className='game-info-title'>{gameInfo.name}</h1>
 			<div className='game-info-section'>
 				<h2 className='game-info-dev'>
-					Released in {gameInfo.released.slice(0, 4)}
+					Released in{" "}
+					{gameInfo.released ? gameInfo.released.slice(0, 4) : "Unknown Year"}
 				</h2>
 				<h2 className='game-info-dev'>
 					Developed by {gameInfo.developers[0].name}
 				</h2>
 				<h2 className='game-info-dev'>
-					Published by {gameInfo.publishers[0].name}
+					Published by{" "}
+					{gameInfo.publishers[0] ? gameInfo.publishers[0].name : "N/A"}
 				</h2>
 				<h2 className='game-info-dev'>
-					For{' '}
+					For{" "}
 					{gameInfo.platforms
 						.map((results) => results.platform.name)
-						.join(', ')}
+						.join(", ")}
 				</h2>
 			</div>
 			<div className='game-info-more'>
@@ -57,8 +59,8 @@ const GameInfo = ({ id }) => {
 							href={store.url}
 							target='_blank'
 							rel='noreferrer'>
-							{' '}
-							{store.store.name}{' '}
+							{" "}
+							{store.store.name}{" "}
 						</a>
 					))}
 				</div>
