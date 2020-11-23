@@ -10,7 +10,6 @@ const GameInfo = ({ id }) => {
 		const url = `https://api.rawg.io/api/games/${id}?key=${process.env.REACT_APP_RAWG_KEY}`;
 
 		axios.get(url).then((game) => {
-			console.log(game.data);
 			setGameInfo(game.data);
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
