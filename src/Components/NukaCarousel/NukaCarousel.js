@@ -10,7 +10,7 @@ const NukaCarousel = () => {
 			process.env.REACT_APP_RAWG_KEY;
 		Axios.get(url)
 			.then((res) => {
-				return res.data.results.slice(0, 10).map((game) => {
+				return res.data.results.slice(0, 50).map((game) => {
 					return game.background_image;
 				});
 			})

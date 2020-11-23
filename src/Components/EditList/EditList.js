@@ -8,6 +8,7 @@ import { AppContext } from '../../AppContext';
 import { useHistory } from 'react-router-dom';
 import '../CreateList/CreateList.css';
 
+// Took out the navigation , could be a stretch or worked on later
 const EditList = ({ id }) => {
 	const emptyForm = {
 		title: '',
