@@ -23,16 +23,16 @@ const EditList = ({ id }) => {
 		axios
 			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
 			.then((res) => {
-                console.log(res.data)
+				console.log(res.data);
 				setFormState(res.data[0]);
 			});
-			axios
-				.get(
-					'https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added'
-				)
-				.then((res) => {
-					setResults(res.data.results);
-				});
+		axios
+			.get(
+				'https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added'
+			)
+			.then((res) => {
+				setResults(res.data.results);
+			});
 	}, []);
 
 	if (!results) {
@@ -49,7 +49,11 @@ const EditList = ({ id }) => {
 
 	function formatGames(games) {
 		const formattedGames = games.map((game) => {
-			return { id: game.id, name: game.name, image: game.background_image };
+			return {
+				id: game.id,
+				name: game.name,
+				image: game.image || game.background_image,
+			};
 		});
 		return formattedGames;
 	}
