@@ -73,13 +73,15 @@ const GameInfo = ({ id }) => {
 					</a>
 				</div>
 			</div>
-			<ReactPlayer
-				width='100%'
-				height='auto'
-				className='react-player'
-				url={gameInfo.clip.clips.full}
-				controls={true}
-			/>
+			{gameInfo.clip ? (
+				<ReactPlayer
+					width='100%'
+					height='auto'
+					className='react-player'
+					url={gameInfo.clip.clips.full}
+					controls={true}
+				/>
+			) : null}
 		</div>
 	);
 };
