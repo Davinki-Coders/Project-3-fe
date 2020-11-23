@@ -9,8 +9,8 @@ import LogIn from './Components/LogIn/LogIn';
 import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
-import EditList from './Components/EditList/EditList';
 import BrowseLists from './Components/BrowseLists/BrowseLists';
+import EditList from './Components/EditList/EditList';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -21,7 +21,9 @@ function App() {
 			username: localStorage.getItem('curatr_user'),
 			_id: localStorage.getItem('curatr_id'),
 		};
-		setUserInfo(storedUser);
+		if (storedUser.username && storedUser._id) {
+			setUserInfo(storedUser);
+		}
 	}
 
 	return (

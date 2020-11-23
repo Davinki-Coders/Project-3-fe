@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const List = ({ id }) => {
 	const [list, setList] = useState({});
 	const { userInfo } = useContext(AppContext);
+	let currentUser = null;
 	useEffect(() => {
 		axios
 			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
@@ -19,13 +20,16 @@ const List = ({ id }) => {
 	if (!list.title) {
 		return <h1>Loading...</h1>;
 	}
+	if (userInfo) {
+		currentUser = userInfo._id;
+	}
 
 	return (
 		<div className='user-list'>
 			<h2>{list.title}</h2>
 			<h3>by {list.author}</h3>
 			<p>{list.description}</p>
-			{userInfo._id === list.owner ? (
+			{currentUser === list.owner ? (
 				<Link to={'/lists/edit/' + id}>Edit List</Link>
 			) : null}
 			<div className='user-list-container'>

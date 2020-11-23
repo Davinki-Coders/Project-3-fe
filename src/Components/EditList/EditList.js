@@ -6,7 +6,7 @@ import CreateCard from '../CreateCard/CreateCard';
 import axios from 'axios';
 import { AppContext } from '../../AppContext';
 import { useHistory } from 'react-router-dom';
-import './EditList.css';
+import '../CreateList/CreateList.css';
 
 const EditList = ({ id }) => {
 	const emptyForm = {
@@ -23,7 +23,6 @@ const EditList = ({ id }) => {
 		axios
 			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
 			.then((res) => {
-				console.log(res.data);
 				setFormState(res.data[0]);
 			});
 		axios
@@ -43,8 +42,30 @@ const EditList = ({ id }) => {
 		history.push('/login');
 	}
 
+	function isValid(form) {
+		if (formState.title && formState.description && formState.games.length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	function handleChange(e) {
 		setFormState({ ...formState, [e.target.id]: e.target.value });
+	}
+
+	function handleDelete() {
+		if (window.confirm('Are you sure? This will delete your list forever!')) {
+			axios({
+				method: 'delete',
+				url: 'https://davinkibackend.herokuapp.com/api/lists/' + id,
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
+				},
+			})
+				.then(() => history.push('/'))
+				.catch(console.error);
+		}
 	}
 
 	function formatGames(games) {
@@ -60,6 +81,10 @@ const EditList = ({ id }) => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		if (!isValid(formState)) {
+			alert('Your title, description, and list cannot be empty!');
+			return;
+		}
 		const createdList = {
 			...formState,
 			games: formatGames(formState.games),
@@ -80,7 +105,7 @@ const EditList = ({ id }) => {
 	}
 
 	return (
-		<div className=''>
+		<div className='create-list'>
 			<form className='' onSubmit={handleSubmit}>
 				<h1>Edit List</h1>
 				<label htmlFor='title'>Title:</label>
@@ -96,19 +121,19 @@ const EditList = ({ id }) => {
 					onChange={handleChange}
 					id='description'
 					value={formState.description}
-					cols='40'
-					rows='10'
 					maxLength='400'></textarea>
 				<button type='submit'>Submit</button>
 			</form>
 			<label htmlFor='searchbar'>Search Games:</label>
+			<h2>Search Results:</h2>
 			<SearchBar setResults={setResults} />
 			<CreateResults
 				results={results}
 				formState={formState}
 				setFormState={setFormState}
 			/>
-			<div className='container'>
+			<h2>Your List:</h2>
+			<div className='create-list-list'>
 				{formState.games.map((game, index) => (
 					<CreateCard
 						selected={true}
@@ -120,6 +145,10 @@ const EditList = ({ id }) => {
 					/>
 				))}
 			</div>
+			<button onClick={handleSubmit}>Submit Your List</button>
+			<button className='err' onClick={handleDelete}>
+				Delete List
+			</button>
 		</div>
 	);
 };

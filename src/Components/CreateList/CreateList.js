@@ -6,6 +6,7 @@ import CreateCard from '../CreateCard/CreateCard';
 import axios from 'axios';
 import { AppContext } from '../../AppContext';
 import { useHistory } from 'react-router-dom';
+import './CreateList.css';
 
 const CreateList = () => {
 	const emptyForm = {
@@ -36,6 +37,14 @@ const CreateList = () => {
 		history.push('/login');
 	}
 
+	function isValid(form) {
+		if (formState.title && formState.description && formState.games.length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	function handleChange(e) {
 		setFormState({ ...formState, [e.target.id]: e.target.value });
 	}
@@ -49,6 +58,10 @@ const CreateList = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		if (!isValid(formState)) {
+			alert('Your title, description, and list cannot be empty!');
+			return;
+		}
 		const createdList = {
 			...formState,
 			games: formatGames(formState.games),
@@ -69,11 +82,12 @@ const CreateList = () => {
 	}
 
 	return (
-		<div className=''>
-			<form className='' onSubmit={handleSubmit}>
+		<div className='create-list'>
+			<form onSubmit={handleSubmit}>
 				<h1>Create List</h1>
 				<label htmlFor='title'>Title:</label>
 				<input
+					className='create-form-title'
 					required
 					id='title'
 					maxLength='40'
@@ -85,19 +99,18 @@ const CreateList = () => {
 					onChange={handleChange}
 					id='description'
 					value={formState.description}
-					cols='40'
-					rows='10'
 					maxLength='400'></textarea>
-				<button type='submit'>Submit</button>
 			</form>
 			<label htmlFor='searchbar'>Search Games:</label>
 			<SearchBar setResults={setResults} />
+			<h2>Search Results:</h2>
 			<CreateResults
 				results={results}
 				formState={formState}
 				setFormState={setFormState}
 			/>
-			<div className='container'>
+			<h2>Your List:</h2>
+			<div className='create-list-list'>
 				{formState.games.map((game, index) => (
 					<CreateCard
 						selected={true}
@@ -109,6 +122,7 @@ const CreateList = () => {
 					/>
 				))}
 			</div>
+			<button onClick={handleSubmit}>Submit Your List</button>
 		</div>
 	);
 };
