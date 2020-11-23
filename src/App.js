@@ -42,7 +42,7 @@ function App() {
 						<Route path='/' exact component={Home} />
 						<Route exact path='/lists/' component={BrowseLists} />
 						<Route path='/create' component={CreateList} />
-						<Route path='/user' component={UserProfile} />
+						<Route path='/user/:id' render={(props) => <UserProfile id={props.match.params.id} />} />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route

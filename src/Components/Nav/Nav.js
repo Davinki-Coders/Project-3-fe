@@ -21,7 +21,7 @@ const Nav = (props) => {
 			<Link to='/create' className='bm-item' href='/lists'>
 				Create List
 			</Link>
-			<Link to='/user' className='bm-item' href='/lists'>
+			<Link to='/user/:id' className='bm-item' href='/lists'>
 				My Lists
 			</Link>
 			<Link to='/lists/edit/5fbad79c5e5fcd0017110fcf'>Edit</Link>

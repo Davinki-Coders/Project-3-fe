@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import RecentLists from "../RecentLists/RecentLists";
-import { AppContext } from "../../AppContext";
 
-const UserProfile = () => {
-	const [lists, setLists] = useState([]);
-	const { userInfo } = useContext(AppContext);
-	const url = `https://davinkibackend.herokuapp.com/api/lists/author/${userInfo._id}`;
+const UserProfile = (props) => {
+    const [lists, setLists] = useState([]);
+    const [author, setAuthor] = useState('Loading...')
+	const url = `https://davinkibackend.herokuapp.com/api/lists/author/${props.id}`;
 
 	useEffect(() => {
 		axios.get(url).then((res) => {
-			setLists(res.data);
+            setAuthor(res.data[0].author)
+            setLists(res.data);
+
 		});
 	}, []);
 
@@ -20,7 +21,7 @@ const UserProfile = () => {
 
 	return (
 		<div>
-			<h2>Lists Curated by {userInfo.username}:</h2>
+			<h2>Lists Curated by {author}:</h2>
 			<RecentLists lists={lists} />
 		</div>
 	);
