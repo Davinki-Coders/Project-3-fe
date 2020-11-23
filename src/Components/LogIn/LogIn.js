@@ -17,6 +17,7 @@ const LogIn = () => {
 		password: '',
 		emailErr: '',
 		passwordErr: '',
+		formErr: '',
 	};
 	const [formState, setFormState] = useState(blankForm);
 
@@ -36,9 +37,15 @@ const LogIn = () => {
 		}
 	}
 
+	function handleBadResponse(res) {
+		setFormState({ ...formState, formErr: 'Login failed, please try again' });
+		setSent(false);
+	}
+
 	function handleSubmit(e) {
 		e.preventDefault();
 		setSent(true);
+		setFormState({ ...formState, formErr: '' });
 		const url = 'https://davinkibackend.herokuapp.com/api/users/login';
 		if (doubleCheckForm()) {
 			Axios({
@@ -58,12 +65,19 @@ const LogIn = () => {
 					localStorage.setItem('token', res.data.token);
 					localStorage.setItem('curatr_user', res.data.username);
 					localStorage.setItem('curatr_id', res.data._id);
+					return res;
 				})
-				.catch(console.error)
-				.finally(() => history.push('/'));
+				.then((res) => {
+					if (!formState.formErr) {
+						history.push('/');
+					}
+				})
+				.catch((res) => {
+					handleBadResponse(res);
+					return res;
+				});
 		} else {
 			setSent(false);
-			console.log('invalid form');
 		}
 	}
 
@@ -109,6 +123,9 @@ const LogIn = () => {
 				<button className='err' type='click' onClick={handleCancel}>
 					Cancel
 				</button>
+				{formState.formErr ? (
+					<p className='err-text'>{formState.formErr}</p>
+				) : null}
 				<p style={{ display: 'block', margin: '3px' }}>
 					Don't have an account?&nbsp;
 					<a href='/signup'>Sign up</a>
