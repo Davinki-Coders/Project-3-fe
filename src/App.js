@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
 import BrowseLists from './Components/BrowseLists/BrowseLists'
+import UserProfile from './Components/UserProfile/UserProfile'
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
@@ -31,7 +32,7 @@ function App() {
 						<Route path='/' exact component={Home} />
 						<Route path='/lists' component={BrowseLists} />
 						<Route path='/create' component={CreateList} />
-						<Route path='/user' />
+						<Route path='/user' component={UserProfile} />
 						<Route path='/login' component={LogIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route
