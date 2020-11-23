@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useContext } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
-import CreateResults from '../CreateResults/CreateResults';
-import CreateCard from '../CreateCard/CreateCard';
-import axios from 'axios';
-import { AppContext } from '../../AppContext';
-import { useHistory } from 'react-router-dom';
-import '../CreateList/CreateList.css';
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import SearchBar from "../SearchBar/SearchBar";
+import CreateResults from "../CreateResults/CreateResults";
+import CreateCard from "../CreateCard/CreateCard";
+import axios from "axios";
+import { AppContext } from "../../AppContext";
+import { useHistory } from "react-router-dom";
+import "../CreateList/CreateList.css";
 
 // Took out the navigation , could be a stretch or worked on later
 const EditList = ({ id }) => {
 	const emptyForm = {
-		title: '',
-		description: '',
+		title: "",
+		description: "",
 		games: [],
 	};
 	const [formState, setFormState] = useState(emptyForm);
@@ -22,13 +22,13 @@ const EditList = ({ id }) => {
 
 	useEffect(() => {
 		axios
-			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
+			.get("https://davinkibackend.herokuapp.com/api/lists/" + id)
 			.then((res) => {
 				setFormState(res.data[0]);
 			});
 		axios
 			.get(
-				'https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added'
+				"https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added"
 			)
 			.then((res) => {
 				setResults(res.data.results);
@@ -40,7 +40,7 @@ const EditList = ({ id }) => {
 	}
 
 	if (!userInfo) {
-		history.push('/login');
+		history.push("/login");
 	}
 
 	function isValid(form) {
@@ -56,15 +56,15 @@ const EditList = ({ id }) => {
 	}
 
 	function handleDelete() {
-		if (window.confirm('Are you sure? This will delete your list forever!')) {
+		if (window.confirm("Are you sure? This will delete your list forever!")) {
 			axios({
-				method: 'delete',
-				url: 'https://davinkibackend.herokuapp.com/api/lists/' + id,
+				method: "delete",
+				url: "https://davinkibackend.herokuapp.com/api/lists/" + id,
 				headers: {
-					Authorization: `Bearer ${localStorage.getItem('token')}`,
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			})
-				.then(() => history.push('/'))
+				.then(() => history.push("/"))
 				.catch(console.error);
 		}
 	}
@@ -83,7 +83,7 @@ const EditList = ({ id }) => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (!isValid(formState)) {
-			alert('Your title, description, and list cannot be empty!');
+			alert("Your title, description, and list cannot be empty!");
 			return;
 		}
 		const createdList = {
@@ -94,14 +94,14 @@ const EditList = ({ id }) => {
 			imageUrl: formState.games[0].background_image,
 		};
 		axios({
-			method: 'patch',
-			url: 'https://davinkibackend.herokuapp.com/api/lists/' + id,
+			method: "patch",
+			url: "https://davinkibackend.herokuapp.com/api/lists/" + id,
 			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
 			data: createdList,
 		})
-			.then(() => history.push('/'))
+			.then(() => history.push("/"))
 			.catch(console.error);
 	}
 
@@ -123,11 +123,10 @@ const EditList = ({ id }) => {
 					id='description'
 					value={formState.description}
 					maxLength='400'></textarea>
-				<button type='submit'>Submit</button>
 			</form>
 			<label htmlFor='searchbar'>Search Games:</label>
-			<h2>Search Results:</h2>
 			<SearchBar setResults={setResults} />
+			<h2>Search Results:</h2>
 			<CreateResults
 				results={results}
 				formState={formState}
