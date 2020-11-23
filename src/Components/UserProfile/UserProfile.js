@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import RecentLists from "../RecentLists/RecentLists";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import RecentLists from '../RecentLists/RecentLists';
 
 const UserProfile = (props) => {
 	const [lists, setLists] = useState([]);
-	const [author, setAuthor] = useState("Loading...");
+	const [author, setAuthor] = useState('Loading...');
 	const url = `https://davinkibackend.herokuapp.com/api/lists/author/${props.id}`;
 
 	useEffect(() => {
