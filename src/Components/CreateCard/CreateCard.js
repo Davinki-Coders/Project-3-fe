@@ -25,7 +25,7 @@ const CreateCard = ({
 	return (
 		<div className='create-card'>
 			<div className='create-card-grid'>
-				<img src={result.background_image} alt={result.name} />
+				<img src={result.background_image || result.image} alt={result.name} />
 				<p className='create-card-title'>{result.name}</p>
 				<button onClick={handleClick}>
 					{!index && index !== 0 ? 'Add' : 'Remove'}
