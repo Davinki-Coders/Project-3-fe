@@ -39,7 +39,7 @@ function App() {
           you'd like to test it on the home page, again please try not to move these
           components that are tied to the burger menu*/}
 						<Route path='/' exact component={Home} />
-						<Route path='/lists' component={BrowseLists} />
+						<Route exact path='/lists/' component={BrowseLists} />
 						<Route path='/create' component={CreateList} />
 						<Route path='/user' />
 						<Route path='/login' component={LogIn} />
