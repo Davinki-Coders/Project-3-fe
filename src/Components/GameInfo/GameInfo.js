@@ -10,6 +10,7 @@ const GameInfo = ({ id }) => {
 		const url = `https://api.rawg.io/api/games/${id}?key=${process.env.REACT_APP_RAWG_KEY}`;
 
 		axios.get(url).then((game) => {
+			console.log('gameinfo:', game.data);
 			setGameInfo(game.data);
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,15 +29,13 @@ const GameInfo = ({ id }) => {
 			<h1 className='game-info-title'>{gameInfo.name}</h1>
 			<div className='game-info-section'>
 				<h2 className='game-info-dev'>
-					Released in{" "}
-					{gameInfo.released ? gameInfo.released.slice(0, 4) : "Unknown Year"}
+					{gameInfo.released ? "Released in " + gameInfo.released.slice(0, 4) : null}
 				</h2>
 				<h2 className='game-info-dev'>
 					Developed by {gameInfo.developers[0].name}
 				</h2>
 				<h2 className='game-info-dev'>
-					Published by{" "}
-					{gameInfo.publishers[0] ? gameInfo.publishers[0].name : "N/A"}
+					{gameInfo.publishers[0] ? "Published by " + gameInfo.publishers[0].name : null}
 				</h2>
 				<h2 className='game-info-dev'>
 					For{" "}
