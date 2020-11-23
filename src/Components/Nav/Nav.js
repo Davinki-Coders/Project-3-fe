@@ -9,6 +9,9 @@ const Nav = (props) => {
 	const { userInfo, setUserInfo } = useContext(AppContext);
 	function logOut() {
 		setUserInfo();
+		localStorage.removeItem('curatr_user');
+		localStorage.removeItem('curatr_id');
+		localStorage.removeItem('token');
 	}
 	return (
 		<Menu right>

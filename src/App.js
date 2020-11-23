@@ -23,7 +23,9 @@ function App() {
 			username: localStorage.getItem('curatr_user'),
 			_id: localStorage.getItem('curatr_id'),
 		};
-		setUserInfo(storedUser);
+		if (storedUser.username && storedUser._id) {
+			setUserInfo(storedUser);
+		}
 	}
 
 	return (
