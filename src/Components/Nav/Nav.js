@@ -22,7 +22,7 @@ const Nav = (props) => {
 				Create List
 			</Link>
 			<Link to='/user' className='bm-item' href='/lists'>
-				My Profile
+				My Lists
 			</Link>
 			{userInfo ? (
 				<button onClick={logOut}>Log Out</button>
