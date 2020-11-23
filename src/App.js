@@ -11,7 +11,6 @@ import { AppContext } from './AppContext';
 import CreateList from './Components/CreateList/CreateList';
 import BrowseLists from './Components/BrowseLists/BrowseLists';
 import EditList from './Components/EditList/EditList';
-import BrowseLists from './Components/BrowseLists/BrowseLists';
 
 function App() {
 	//PLEASE DO NOTE MOVE THE HTML BELOW, IT WILL BREAK THE BURGER MENU
