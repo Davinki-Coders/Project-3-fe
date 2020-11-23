@@ -15,23 +15,24 @@ const Nav = (props) => {
 	}
 	return (
 		<Menu right>
-			<Link to='/' className='bm-item' href='/'>
+			<Link to='/' className='bm-item'>
 				Home
 			</Link>
-			<Link to='/lists' className='bm-item' href='/lists'>
+			<Link to='/lists' className='bm-item'>
 				Browse Lists
 			</Link>
-			<Link to='/create' className='bm-item' href='/lists'>
+			<Link to='/create' className='bm-item'>
 				Create List
 			</Link>
-			<Link to='/user' className='bm-item' href='/lists'>
-				My Profile
-			</Link>
-			{/* <Link to='/lists/edit/5fbad79c5e5fcd0017110fcf'>Edit</Link> */} 
+			{userInfo ? (
+				<Link to={'/user/' + userInfo._id} className='bm-itm'>
+					My Lists
+				</Link>
+			) : null}
 			{userInfo ? (
 				<button onClick={logOut}>Log Out</button>
 			) : (
-				<Link to='/login' className='bm-item' href='/lists'>
+				<Link to='/login' className='bm-item'>
 					Log In
 				</Link>
 			)}
