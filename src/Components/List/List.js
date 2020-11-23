@@ -11,7 +11,7 @@ const List = ({ id }) => {
 	let currentUser = null;
 	useEffect(() => {
 		axios
-			.get("https://davinkibackend.herokuapp.com/api/lists/" + id)
+			.get('https://davinkibackend.herokuapp.com/api/lists/' + id)
 			.then((res) => {
 				setList(res.data[0]);
 			});
@@ -28,7 +28,7 @@ const List = ({ id }) => {
 		<div className='user-list'>
 			<h2>{list.title}</h2>
 			<h3>
-				by <Link to={"/user/" + list.owner}> {list.author}</Link>
+				by <Link to={'/user/' + list.owner}> {list.author}</Link>
 			</h3>
 			<p>{list.description}</p>
 			{currentUser === list.owner ? (
