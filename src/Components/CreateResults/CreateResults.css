@@ -1,0 +1,18 @@
+.scrolling-wrapper {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	max-width: 95%;
+}
+
+.scrolling-wrapper .card-container {
+	display: inline-block;
+}
+
+.scrolling-wrapper .card-container img {
+	height: 150px;
+}
+
+.scrolling-wrapper .create-card-grid {
+	width: 150px;
+}

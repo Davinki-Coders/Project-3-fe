@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import RecentLists from '../RecentLists/RecentLists';
-import { Link } from 'react-router-dom';
-import './Home.css';
+import React, { useState, useEffect } from "react";
+import RecentLists from "../RecentLists/RecentLists";
+import { Link } from "react-router-dom";
+import Hero from "../Hero/Hero";
+import "./Home.css";
+import axios from "axios";
 
 const Home = () => {
-	const [newLists, setNewLists] = useState([]);
+	const [recentLists, setRecentLists] = useState([]);
 
 	useEffect(() => {
-		fetch('/test-data.json')
-			.then((res) => res.json())
-			.then((resjson) => {
-				const list = [];
-				for (let i = 0; i < 10; i++) {
-					list.push(resjson.list);
-				}
-				setNewLists(list);
-			});
+		axios.get("https://davinkibackend.herokuapp.com/api/lists").then((res) => {
+			setRecentLists(res.data.slice(Math.max(res.data.length - 4, 0)));
+		});
 	}, []);
+
 	return (
 		<div className='home'>
+			<Hero />
 			<div className='recents-header'>
 				<h2>Recently Created:</h2>
 				<Link to='/lists'>Browse More</Link>
 			</div>
-			<RecentLists lists={newLists} />
+			<RecentLists lists={recentLists} />
 		</div>
 	);
 };

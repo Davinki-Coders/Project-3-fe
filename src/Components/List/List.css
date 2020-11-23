@@ -1,0 +1,33 @@
+.user-list-container {
+	margin-top: 15px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: repeat((auto-fill), 400px);
+	gap: 10px 10px;
+}
+.user-list {
+	padding: 0 15px;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.user-list h2,
+h3,
+p {
+	margin: 10px 0;
+}
+
+.user-list h3,
+p {
+	padding: 0 5px;
+	font-size: 15px;
+	color: lightgray;
+}
+
+@media (min-width: 700px) {
+	.user-list,
+	.user-list h3,
+	p {
+		font-size: 120%;
+	}
+}
