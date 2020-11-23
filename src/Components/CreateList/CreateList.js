@@ -6,6 +6,7 @@ import CreateCard from '../CreateCard/CreateCard';
 import axios from 'axios';
 import { AppContext } from '../../AppContext';
 import { useHistory } from 'react-router-dom';
+import './CreateList.css';
 
 const CreateList = () => {
 	const emptyForm = {
@@ -56,7 +57,7 @@ const CreateList = () => {
 			owner: userInfo._id,
 			imageUrl: formState.games[0].background_image,
 		};
-		axios({
+		/* axios({
 			method: 'post',
 			url: 'https://davinkibackend.herokuapp.com/api/lists/',
 			headers: {
@@ -65,39 +66,40 @@ const CreateList = () => {
 			data: createdList,
 		})
 			.then(() => history.push('/'))
-			.catch(console.error);
+			.catch(console.error); */
+
+		console.log(createdList);
 	}
 
 	return (
-		<div className=''>
-			<form className='' onSubmit={handleSubmit}>
-				<h1>Create List</h1>
-				<label htmlFor='title'>Title:</label>
-				<input
-					required
-					id='title'
-					maxLength='40'
-					onChange={handleChange}
-					value={formState.title}></input>
-				<label htmlFor='description'>Description:</label>
-				<textarea
-					required
-					onChange={handleChange}
-					id='description'
-					value={formState.description}
-					cols='40'
-					rows='10'
-					maxLength='400'></textarea>
-				<button type='submit'>Submit</button>
-			</form>
+		<div className='create-list'>
+			<h1>Create List</h1>
+			<label htmlFor='title'>Title:</label>
+			<input
+				required
+				id='title'
+				maxLength='40'
+				onChange={handleChange}
+				value={formState.title}></input>
+			<label htmlFor='description'>Description:</label>
+			<textarea
+				required
+				onChange={handleChange}
+				id='description'
+				value={formState.description}
+				cols='10'
+				rows='10'
+				maxLength='400'></textarea>
 			<label htmlFor='searchbar'>Search Games:</label>
 			<SearchBar setResults={setResults} />
+			<h2>Search Results:</h2>
 			<CreateResults
 				results={results}
 				formState={formState}
 				setFormState={setFormState}
 			/>
-			<div className='container'>
+			<h2>Your List:</h2>
+			<div className='create-list-list'>
 				{formState.games.map((game, index) => (
 					<CreateCard
 						selected={true}
@@ -109,6 +111,7 @@ const CreateList = () => {
 					/>
 				))}
 			</div>
+			<button onClick={handleSubmit}>Submit Your List</button>
 		</div>
 	);
 };
