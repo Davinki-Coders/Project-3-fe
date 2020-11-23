@@ -56,6 +56,8 @@ const LogIn = () => {
 						email: res.data.email,
 					});
 					localStorage.setItem('token', res.data.token);
+					localStorage.setItem('curatr_user', res.data.username);
+					localStorage.setItem('curatr_id', res.data._id);
 				})
 				.catch(console.error)
 				.finally(() => history.push('/'));
