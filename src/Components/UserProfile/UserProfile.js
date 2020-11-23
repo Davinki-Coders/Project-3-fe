@@ -3,15 +3,14 @@ import axios from "axios";
 import RecentLists from "../RecentLists/RecentLists";
 
 const UserProfile = (props) => {
-    const [lists, setLists] = useState([]);
-    const [author, setAuthor] = useState('Loading...')
+	const [lists, setLists] = useState([]);
+	const [author, setAuthor] = useState("Loading...");
 	const url = `https://davinkibackend.herokuapp.com/api/lists/author/${props.id}`;
 
 	useEffect(() => {
 		axios.get(url).then((res) => {
-            setAuthor(res.data[0].author)
-            setLists(res.data);
-
+			setAuthor(res.data[0].author);
+			setLists(res.data);
 		});
 	}, []);
 
