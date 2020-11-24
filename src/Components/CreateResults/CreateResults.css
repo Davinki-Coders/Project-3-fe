@@ -2,7 +2,7 @@
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
-	max-width: 95%;
+	max-width: 100%;
 }
 
 .scrolling-wrapper .card-container {
