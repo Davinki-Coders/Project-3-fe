@@ -21,7 +21,7 @@ const Hero = () => {
 					<p>
 						
 						Curate game lists.
-						Share your good tastes. Recommendations galor.
+						Share your good tastes. Recommendations galore.
 					</p>
 					{userInfo ? (
 						<h2>{`Welcome ${userInfo.username}!`}</h2>
